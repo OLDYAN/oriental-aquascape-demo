@@ -9,7 +9,7 @@ A free static React prototype for Oriental Aquascape, an Eastern-aesthetic aquat
 - TypeScript
 - Plain CSS
 - Local data files
-- Code-native inline SVG illustration system
+- Local generated sketch-image asset system with inline SVG fallbacks
 
 ## Main Features
 
@@ -21,7 +21,7 @@ A free static React prototype for Oriental Aquascape, an Eastern-aesthetic aquat
 - Disabled prototype checkout
 - Consultation brief builder
 - Static AI-assisted recommendation mock
-- Original CSS/SVG visual system with reduced-motion support
+- Original CSS/SVG fallback visual system with reduced-motion support
 
 ## Prototype Limitations
 
@@ -89,7 +89,7 @@ Netlify:
 ## Future Integration Roadmap
 
 - Replace mock products with Shopify or CMS data.
-- Add approved real product imagery and project photography.
+- Generate approved local sketch-style `.webp` illustration assets and place them in `public/illustrations/final/`.
 - Add a real consultation form backend only when data handling and response workflows are ready.
 - Add real checkout only after policies, shipping, inventory, and compliance are ready.
 - Live fish commerce requires logistics, compliance, quarantine, DOA policy, and support planning.

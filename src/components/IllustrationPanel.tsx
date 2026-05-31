@@ -1,5 +1,6 @@
 import type { VisualMotif, VisualTone } from '../data/visualMotifs';
-import { SketchMotif } from './SketchMotif';
+import { getIllustrationAsset } from '../data/illustrationAssets';
+import { GeneratedImagePanel } from './GeneratedImagePanel';
 
 type IllustrationPanelProps = {
   label: string;
@@ -18,21 +19,21 @@ export function IllustrationPanel({
   size = 'default',
   className = '',
 }: IllustrationPanelProps) {
-  const panelClassName = [
-    'illustration-panel',
-    'visual-panel-textured',
-    `illustration-panel-${size}`,
-    `illustration-panel-${tone}`,
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const asset = getIllustrationAsset(motif);
+  const panelAlt = caption ? `${label}: ${caption}` : label;
 
   return (
-    <div className={panelClassName} role="img" aria-label={caption ? `${label}: ${caption}` : label}>
-      <span className="illustration-label">{label}</span>
-      {caption ? <span className="illustration-caption">{caption}</span> : null}
-      <SketchMotif motif={motif} />
-    </div>
+    <GeneratedImagePanel
+      label={label}
+      caption={caption}
+      src={asset.finalSrc}
+      alt={panelAlt}
+      imageReady={asset.status === 'final'}
+      motif={motif}
+      tone={tone}
+      size={size}
+      ratio={asset.ratio}
+      className={className}
+    />
   );
 }

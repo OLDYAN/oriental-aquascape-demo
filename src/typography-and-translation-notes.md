@@ -4,14 +4,16 @@
 
 - English display headings use an editorial serif stack: `"Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif`.
 - English body, navigation, controls, filters, drawers, product UI, forms, and footer links use a clean system sans stack.
-- Chinese display headings use a Songti-style serif stack only for hero, page, section, product, and editorial headings.
+- Chinese display headings use a modern Songti/Ming-style serif stack only for hero, page, major section, and editorial headings.
 - Chinese body, navigation, buttons, filter chips, product UI, cart, forms, and consultation controls use a modern Chinese sans stack.
+- The previous Kaiti / hard-pen calligraphy direction is intentionally removed from global typography tokens.
 - Numeric index markers use a monospaced numeric stack so category ordering feels intentional and precise.
 
 ## Chinese Typography Rules
 
 - Major Chinese headings need a little more line-height than English headings and should avoid compressed tracking.
 - Chinese UI labels should not inherit uppercase-style English spacing or text-transform.
+- Chinese product cards, drawers, cart totals, builder controls, and generated brief output should stay Heiti/Sans rather than Songti.
 - Chinese buttons, chips, and builder options need enough vertical padding to wrap cleanly on mobile.
 - Chinese body copy should stay clear and calm: elegant, but not so literary that the user has to parse it twice.
 
@@ -28,6 +30,7 @@
 - 达: make Chinese read naturally as brand copy, not literal translation.
 - 雅: keep the voice calm, refined, premium, and Eastern-aesthetic without becoming mystical or ornate.
 - Chinese copy should sound like a design studio and curated catalog, not a pet store, discount marketplace, or fortune-telling service.
+- Chinese navigation and UI labels should stay direct and contemporary. Poetic wording belongs mainly in hero, story, and lookbook copy.
 
 ## Ecommerce Translation Standards
 
@@ -62,8 +65,8 @@
 - 高端观赏鱼
 - 水生植物
 - 水族设备
-- 非物质文化遗产传承手法制作的古法鱼缸
-- 非遗传承手法
+- 承袭传统器缸语汇
+- 古法器缸与当代生活
 - 器皿与装饰品
 - 陶瓷、玉器等装饰品
 - 易学风水空间咨询

@@ -6,8 +6,9 @@ The static demo should feel like a refined Eastern aquatic design studio: minima
 
 ## Illustration Principles
 
-- Use original inline SVG and CSS only.
-- Treat sketch and comic influence as editorial concept drawing, not cartoon styling.
+- Use local generated sketch-image assets when approved files exist in `public/illustrations/final/`.
+- Keep existing inline SVG motifs as fallback so missing final images never break layout.
+- Treat sketch influence as editorial concept drawing, not cartoon styling.
 - Keep linework thin, slightly irregular, and spacious.
 - Use vessel silhouettes, waterlines, jade or ceramic forms, aquatic plant linework, spatial diagrams, and subtle matching nodes.
 - Use the ornamental fish silhouette sparingly and only for the future/later category.
@@ -44,7 +45,7 @@ The static demo should feel like a refined Eastern aquatic design studio: minima
 - No cute mascot style, cartoon fish, bright anime color, heavy comic effects, or repeated speech bubbles.
 - No neon cyber look, dashboard-heavy graphics, or generic SaaS decoration.
 - No red-and-gold festive styling, cheap gold, overdecorated patterning, or marketplace clutter.
-- No external image URLs, real photos, generated image APIs, or external scripts.
+- No external image URLs, real photos, generated image APIs, external scripts, or runtime image-generation calls.
 
 ## Premium Sketch / Comic Boundaries
 
@@ -52,13 +53,29 @@ Sketch/comic style means controlled editorial drawing: quiet panels, thin ink li
 
 ## Illustration Complexity Upgrade
 
-- Add more internal contour lines, water layers, material hatching, vessel lips, plant stems, equipment details, and spatial diagram structure.
-- Keep the drawings believable as material studies without becoming photo-based or busy.
-- Use layered SVG forms, not external images.
-- Preserve whitespace around captions and labels so the art does not compete with text.
+- Future final images should add internal contour lines, water layers, material hatching, vessel lips, plant stems, equipment details, and spatial diagram structure.
+- Keep drawings believable as material and architectural studies without becoming photo-based or busy.
+- Use local generated sketch images for final artwork; use layered SVG forms only as fallback.
+- Preserve whitespace around captions and labels so art does not compete with text.
 - Motifs should vary in density: hero, product drawer, and consultation visuals may be richer; small product cards should be cleaner.
 - Use soft underlays, secondary contour lines, and fine hatching to make panels read as professional concept studies rather than simple icons.
 - Material suggestion should come from line weight, translucent fills, ceramic/jade/mineral color, and disciplined composition.
+
+## Round 12B Local Image Asset System
+
+- Final generated sketch images belong in `public/illustrations/final/`.
+- Prompt documentation lives in `src/illustration-prompt-pack.md`.
+- Asset metadata lives in `src/data/illustrationAssets.ts`.
+- `.generated-image-panel`, `.image-mat`, `.generated-image`, `.generated-image-fallback`, and `.image-ratio-*` classes provide mounted rice-paper image surfaces.
+- Missing or pending final images use the existing `SketchMotif` fallback with a stable panel size and no broken image icon.
+
+## Round 12A Paper Texture Upgrade
+
+- Use local procedural SVG textures from `public/textures/` only; no external imagery, real photos, online texture libraries, canvas, or network calls.
+- Paper texture should be visible as handmade fiber, rough mineral grain, and faint ink absorption, especially in global backgrounds, visual panels, cards, drawers, and brief surfaces.
+- Illustration panels should read as sketches placed on tactile paper, with local paper fiber behind SVG motifs.
+- Soft fiber edges are allowed on major paper surfaces, but they should remain refined and quiet rather than torn, dirty, or scrapbook-like.
+- Text-heavy regions should keep calmer local surfaces and place content above texture overlays.
 
 ## Professional Layout QA Checklist
 
@@ -70,6 +87,7 @@ Sketch/comic style means controlled editorial drawing: quiet panels, thin ink li
 - Grid cards should not jump height on hover or focus.
 - Section boundaries should use consistent thin borders, measured padding, and quiet shadows.
 - Mobile layouts should stack without clipping, horizontal overflow, or crowded CTA groups.
+- Paper texture must remain visible on normal laptop and mobile screens without reducing contrast or creating dirty/grunge artifacts.
 
 ## Anti-Overlap Rules
 
@@ -88,9 +106,25 @@ Sketch/comic style means controlled editorial drawing: quiet panels, thin ink li
 - Confirm no horizontal overflow on mobile and no text collision with illustration captions.
 - Confirm SVG decorative internals stay `aria-hidden` while panels and drawers keep meaningful labels.
 
+## Round 12A QA Rules
+
+- Confirm the global background visibly reads as physical paper rather than only smooth gradients.
+- Confirm product cards, lookbook panels, category panels, drawers, consultation builder, and generated brief output have tactile ceramic-paper depth.
+- Confirm soft fiber edges are visible on major paper surfaces but do not look torn or messy.
+- Confirm dense English and Chinese text remains readable over the stronger texture.
+- Confirm no route introduces external image or network texture requests.
+
+## Round 12B QA Rules
+
+- Confirm Chinese headings use Songti/Ming-style display fonts and Chinese UI uses Heiti/Sans.
+- Confirm Kaiti / hard-pen calligraphy is not present in the active font stack.
+- Confirm generated image panels expose final local asset paths but fall back safely while assets are pending.
+- Confirm no external image URLs, image-generation API calls, or real photos are introduced.
+- Confirm fallback SVGs remain `aria-hidden` inside meaningful image panels.
+
 ## Future Image Replacement
 
-The current illustrations are concept visuals. Future approved photography, product renders, or project imagery can replace panels if they preserve the same restraint, crop discipline, color temperature, and material quality.
+The current rendered drawings are fallback concept visuals. Future generated sketch assets can replace them by exporting `.webp` files into `public/illustrations/final/` and marking the relevant asset as `final` in `src/data/illustrationAssets.ts`.
 
 ## Accessibility Considerations
 

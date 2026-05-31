@@ -25,16 +25,23 @@
 }
 
 @media (max-width: 860px) {
+  :root {
+    --texture-strength-global: 0.095;
+    --texture-strength-panel: 0.105;
+    --texture-strength-illustration: 0.17;
+    --texture-strength-edge: 0.065;
+  }
+
   .app-shell {
     background-attachment: scroll;
   }
 
   .app-shell::before {
-    opacity: 0.24;
+    opacity: 0.2;
   }
 
   .app-shell::after {
-    opacity: 0.34;
+    opacity: 0.28;
   }
 
   .mobile-menu-button {
@@ -129,11 +136,28 @@
 }
 
 @media (max-width: 560px) {
+  :root {
+    --texture-strength-global: 0.08;
+    --texture-strength-panel: 0.09;
+    --texture-strength-illustration: 0.14;
+    --texture-strength-text: 0.035;
+    --texture-strength-edge: 0.055;
+  }
+
   .site-header,
   .site-footer,
   .hero-section,
   .section-shell {
     width: min(100% - 28px, var(--container-wide));
+  }
+
+  .shop-section::before,
+  .consultation-builder::before,
+  .story-layout::before,
+  .category-section::before,
+  .lookbook-section::before,
+  .commerce-section::before {
+    inset-inline: 0;
   }
 
   .hero-copy h1 {
@@ -271,11 +295,23 @@
   }
 
   .surface-texture::before,
+  .paper-texture::before,
+  .paper-texture-strong::before,
+  .paper-fiber-surface::before,
+  .paper-card::before,
+  .paper-panel::before,
+  .paper-drawer::before,
+  .paper-visual-panel::before,
+  .paper-brief::before,
   .surface-rice-paper::before,
   .surface-paper::before,
   .surface-porcelain::before,
   .surface-ceramic::before,
   .surface-frosted::before,
+  .surface-frosted-paper::before,
+  .surface-ceramic-paper::before,
+  .surface-rough-paper::before,
+  .surface-ink-absorb::before,
   .surface-ink-wash::before,
   .surface-mineral::before,
   .panel-frosted::before,
@@ -287,7 +323,7 @@
   .shop-matte-surface::before,
   .panel-textured::before,
   .visual-panel-textured::before {
-    opacity: 0.58;
+    opacity: var(--texture-strength-panel);
   }
 
   .builder-progress {

@@ -7,10 +7,16 @@ type SketchMotifProps = {
 function DraftingGround() {
   return (
     <g className="sketch-drafting-ground" aria-hidden="true">
+      <path className="sketch-construction" d="M56 44 L304 44 L304 206 L56 206 Z" />
+      <path className="sketch-construction" d="M180 42 L180 210" />
+      <path className="sketch-construction" d="M56 126 L304 126" />
       <path className="sketch-line sketch-fine" d="M52 206 C111 218 237 218 312 204" />
       <path className="sketch-line sketch-fine" d="M74 56 L74 205" />
       <path className="sketch-line sketch-fine" d="M286 48 L286 204" />
       <path className="sketch-line sketch-wash-line" d="M64 72 C132 52 227 54 296 74" />
+      <path className="sketch-measure" d="M46 62 L46 190" />
+      <path className="sketch-measure" d="M314 62 L314 190" />
+      <path className="sketch-measure" d="M48 62 L58 62 M48 190 L58 190 M302 62 L314 62 M302 190 L314 190" />
     </g>
   );
 }
@@ -37,6 +43,10 @@ function HeroWaterVessel() {
       <path className="sketch-line sketch-vessel-detail" d="M146 90 C168 101 197 100 219 89" />
       <path className="sketch-line sketch-vessel-detail" d="M136 119 C160 132 207 132 230 119" />
       <path className="sketch-line sketch-vessel-detail" d="M128 145 C158 158 212 158 241 144" />
+      <path className="sketch-volume" d="M142 68 C160 75 205 75 225 68" />
+      <path className="sketch-volume" d="M139 159 C164 172 209 172 235 158" />
+      <path className="sketch-paper-hatch" d="M152 101 L163 94 M166 104 L178 97 M191 103 L204 96 M208 99 L219 92" />
+      <path className="sketch-paper-hatch" d="M136 132 L152 126 M158 137 L176 130 M185 137 L204 130 M211 134 L229 127" />
       <path className="sketch-line sketch-fine" d="M151 80 C145 108 143 139 149 168" />
       <path className="sketch-line sketch-fine" d="M220 80 C226 109 228 139 221 169" />
       <path className="sketch-line sketch-depth" d="M160 76 C153 104 154 146 163 176" />
@@ -46,6 +56,7 @@ function HeroWaterVessel() {
       <path className="sketch-line sketch-hatch" d="M87 160 C99 154 112 155 123 164" />
       <path className="sketch-line sketch-hatch" d="M93 175 C104 168 114 169 122 176" />
       <path className="sketch-line sketch-hatch" d="M84 166 L124 150" />
+      <path className="sketch-paper-hatch" d="M88 153 L103 144 M96 187 L119 180 M72 181 L91 188" />
       <path className="sketch-line sketch-facet" d="M99 142 L105 189" />
       <path className="sketch-line sketch-facet" d="M78 164 L128 170" />
       <path className="sketch-line sketch-root" d="M111 186 C120 193 135 195 151 193" />
@@ -69,11 +80,15 @@ function HeritageAquarium() {
       <path className="sketch-line sketch-vessel-detail" d="M114 78 C140 62 213 63 249 78" />
       <path className="sketch-line sketch-vessel-detail" d="M132 89 C158 99 196 100 224 90" />
       <path className="sketch-line sketch-vessel-detail" d="M126 104 C152 114 205 115 231 104" />
+      <path className="sketch-volume" d="M118 78 C147 71 209 72 245 79" />
+      <path className="sketch-volume" d="M122 156 C150 169 210 169 239 155" />
       <path className="sketch-line sketch-waterline motion-drift" d="M121 121 C151 112 178 128 207 119 C225 114 239 116 252 120" />
       <path className="sketch-line sketch-waterline motion-drift" d="M125 137 C154 130 177 142 204 135 C223 131 238 132 249 136" />
       <path className="sketch-line sketch-craft-line" d="M134 127 C157 137 203 138 225 126" />
       <path className="sketch-line sketch-craft-line" d="M144 146 C164 155 194 155 215 146" />
       <path className="sketch-line sketch-craft-line" d="M134 164 C157 173 203 173 227 163" />
+      <path className="sketch-paper-hatch" d="M132 116 L152 108 M156 120 L179 111 M188 120 L211 112 M215 116 L235 108" />
+      <path className="sketch-paper-hatch" d="M129 151 L150 144 M158 157 L183 150 M191 157 L216 150 M221 151 L239 145" />
       <path className="sketch-line sketch-fine" d="M152 99 C146 126 147 153 155 179" />
       <path className="sketch-line sketch-fine" d="M207 100 C214 126 214 153 205 179" />
       <path className="sketch-line sketch-depth" d="M166 102 C161 130 163 155 170 179" />
@@ -103,16 +118,21 @@ function JadeStone() {
       <path className="sketch-line sketch-facet" d="M174 135 L246 130 L190 178 Z" />
       <path className="sketch-line sketch-facet" d="M121 120 L133 199" />
       <path className="sketch-line sketch-facet" d="M227 105 L231 186" />
+      <path className="sketch-volume" d="M89 152 C105 126 136 123 151 148" />
+      <path className="sketch-volume" d="M184 132 C201 111 230 113 244 136" />
       <path className="sketch-line sketch-hatch" d="M91 173 C111 164 132 168 148 181" />
       <path className="sketch-line sketch-hatch" d="M184 153 C205 143 228 146 250 162" />
       <path className="sketch-line sketch-hatch" d="M102 187 C121 180 138 182 151 191" />
       <path className="sketch-line sketch-hatch" d="M184 168 C203 159 227 162 240 174" />
+      <path className="sketch-paper-hatch" d="M86 168 L121 153 M99 184 L145 164 M180 164 L228 141 M190 179 L252 151" />
       <path className="sketch-line sketch-shadow" d="M70 198 C113 211 238 211 286 194" />
       <path className="sketch-line sketch-plant" d="M269 183 C268 152 262 128 246 101" />
       <path className="sketch-line sketch-plant" d="M270 183 C284 153 291 132 289 101" />
       <path className="sketch-line sketch-plant" d="M270 183 C252 159 237 143 217 130" />
       <path className="sketch-leaf-fill" d="M239 129 C253 118 267 119 276 132 C260 137 248 136 239 129 Z" />
       <path className="sketch-leaf-fill" d="M275 130 C290 120 302 123 311 137 C296 141 284 139 275 130 Z" />
+      <path className="sketch-leaf-vein" d="M244 128 C254 128 264 130 273 132" />
+      <path className="sketch-leaf-vein" d="M280 130 C289 132 298 134 307 137" />
       <path className="sketch-line sketch-plant" d="M247 118 C258 113 264 112 273 116" />
       <path className="sketch-line sketch-plant" d="M287 120 C296 116 301 118 307 124" />
       <path className="sketch-line sketch-root" d="M266 183 C253 190 243 195 232 203" />
@@ -140,6 +160,9 @@ function AquaticPlant() {
       <path className="sketch-leaf-fill" d="M117 118 C132 108 148 112 156 127 C139 132 127 128 117 118 Z" />
       <path className="sketch-leaf-fill" d="M166 121 C183 108 199 114 206 130 C188 134 176 130 166 121 Z" />
       <path className="sketch-leaf-fill" d="M94 134 C107 124 121 129 127 144 C112 146 101 143 94 134 Z" />
+      <path className="sketch-leaf-vein" d="M121 118 C133 121 144 124 153 127" />
+      <path className="sketch-leaf-vein" d="M170 121 C183 124 195 127 204 130" />
+      <path className="sketch-leaf-vein" d="M98 134 C108 137 118 140 126 144" />
       <path className="sketch-line sketch-plant" d="M224 190 C223 158 216 126 198 94" />
       <path className="sketch-line sketch-plant" d="M226 190 C240 158 250 132 252 101" />
       <path className="sketch-line sketch-plant" d="M225 190 C205 164 187 143 166 121" />
@@ -147,6 +170,9 @@ function AquaticPlant() {
       <path className="sketch-line sketch-plant" d="M249 126 C263 120 272 123 280 135" />
       <path className="sketch-leaf-fill" d="M198 113 C213 102 228 108 236 126 C219 130 207 126 198 113 Z" />
       <path className="sketch-leaf-fill" d="M246 125 C260 112 276 118 284 135 C268 139 255 136 246 125 Z" />
+      <path className="sketch-leaf-vein" d="M202 113 C214 117 226 121 234 126" />
+      <path className="sketch-leaf-vein" d="M250 125 C261 129 273 132 282 135" />
+      <path className="sketch-paper-hatch" d="M119 168 C134 163 151 166 166 174 M205 166 C224 160 246 163 263 174" />
       <path className="sketch-line sketch-root" d="M142 190 C126 198 112 202 95 204" />
       <path className="sketch-line sketch-root" d="M224 190 C242 198 259 201 276 199" />
       <path className="sketch-line sketch-root" d="M183 188 C176 198 166 203 151 207" />
@@ -161,6 +187,8 @@ function OrnamentalFish() {
       <path className="sketch-line sketch-waterline motion-drift" d="M62 132 C104 123 140 141 181 132 C225 122 259 139 309 127" />
       <path className="sketch-fill sketch-fish" d="M118 143 C151 105 205 104 238 142 C210 178 153 177 118 143 Z" />
       <path className="sketch-fill sketch-fill-wash" d="M136 142 C159 121 198 121 221 142 C199 162 158 163 136 142 Z" />
+      <path className="sketch-construction" d="M120 143 C148 127 207 127 237 142" />
+      <path className="sketch-construction" d="M120 143 C150 158 207 158 237 142" />
       <path className="sketch-line sketch-fish-line" d="M238 142 L284 115 C277 137 277 151 286 173 Z" />
       <path className="sketch-line sketch-fish-line" d="M239 142 L285 142" />
       <path className="sketch-line sketch-fish-line" d="M153 128 C172 140 198 140 217 128" />
@@ -170,8 +198,11 @@ function OrnamentalFish() {
       <path className="sketch-line sketch-scale" d="M170 121 C180 132 181 151 171 164" />
       <path className="sketch-line sketch-scale" d="M195 121 C205 132 205 151 196 165" />
       <path className="sketch-line sketch-scale" d="M224 132 C236 139 236 148 224 156" />
+      <path className="sketch-line sketch-scale" d="M181 119 C190 132 191 153 181 167" />
+      <path className="sketch-line sketch-scale" d="M210 124 C220 136 220 150 210 162" />
       <path className="sketch-line sketch-hatch" d="M160 135 C175 129 193 129 210 136" />
       <path className="sketch-line sketch-hatch" d="M162 150 C178 155 198 155 214 149" />
+      <path className="sketch-paper-hatch" d="M244 136 L278 120 M243 148 L282 138 M246 158 L282 163" />
       <path className="sketch-line sketch-material" d="M170 106 C182 92 205 93 219 108" />
       <circle className="sketch-node" cx="146" cy="141" r="3" />
       <path className="sketch-line sketch-tech" d="M110 88 C161 72 224 75 279 93" />
@@ -186,6 +217,8 @@ function EquipmentStudy() {
     <>
       <rect className="sketch-line sketch-equipment" x="94" y="78" width="72" height="104" rx="8" />
       <rect className="sketch-line sketch-equipment" x="198" y="70" width="76" height="118" rx="8" />
+      <path className="sketch-construction" d="M88 70 L172 70 L172 190 L88 190 Z" />
+      <path className="sketch-construction" d="M190 62 L282 62 L282 197 L190 197 Z" />
       <rect className="sketch-line sketch-fine" x="107" y="106" width="45" height="56" rx="4" />
       <rect className="sketch-line sketch-fine" x="213" y="101" width="45" height="62" rx="4" />
       <path className="sketch-line sketch-equipment-detail" d="M103 95 L157 95" />
@@ -198,6 +231,8 @@ function EquipmentStudy() {
       <path className="sketch-line sketch-equipment-detail" d="M222 108 L251 108" />
       <path className="sketch-line sketch-equipment-detail" d="M112 154 L148 154" />
       <path className="sketch-line sketch-equipment-detail" d="M218 152 L254 152" />
+      <path className="sketch-paper-hatch" d="M104 84 L157 84 M203 77 L268 77 M100 176 L162 176 M204 181 L267 181" />
+      <path className="sketch-volume" d="M166 82 L178 72 L282 72 M274 82 L286 72 L286 190" />
       <path className="sketch-line sketch-hatch" d="M112 166 L148 166" />
       <path className="sketch-line sketch-hatch" d="M218 169 L254 169" />
       <path className="sketch-line sketch-tech" d="M166 101 C184 101 184 99 198 99" />
@@ -219,6 +254,8 @@ function DecorativePieces() {
       <path className="sketch-fill sketch-fill-wash" d="M92 188 C128 174 166 174 198 188 C168 203 123 204 92 188 Z" />
       <path className="sketch-fill sketch-stone" d="M207 143 C221 112 260 112 274 142 C289 172 252 194 225 181 C206 172 200 157 207 143 Z" />
       <path className="sketch-glaze" d="M119 103 C136 111 161 111 179 102" />
+      <path className="sketch-volume" d="M114 92 C133 98 160 99 179 92" />
+      <path className="sketch-volume" d="M111 174 C133 184 162 184 184 173" />
       <path className="sketch-line sketch-depth" d="M123 103 C119 128 120 158 127 180" />
       <path className="sketch-line sketch-depth" d="M173 103 C181 128 180 157 174 180" />
       <path className="sketch-line sketch-bronze" d="M73 197 C126 207 241 207 298 194" />
@@ -227,6 +264,7 @@ function DecorativePieces() {
       <path className="sketch-line sketch-stone-line" d="M232 116 L240 186" />
       <path className="sketch-line sketch-stone-line" d="M212 158 L278 135" />
       <path className="sketch-line sketch-facet" d="M211 144 L274 142 L225 181 Z" />
+      <path className="sketch-paper-hatch" d="M113 122 L135 113 M119 146 L153 135 M122 167 L174 154 M216 160 L266 140 M224 177 L276 155" />
       <path className="sketch-line sketch-vessel-detail" d="M111 94 C132 84 160 84 181 92" />
       <path className="sketch-line sketch-vessel-detail" d="M110 119 C132 129 163 129 186 118" />
       <path className="sketch-line sketch-vessel-detail" d="M113 159 C132 168 162 168 181 159" />
@@ -247,6 +285,8 @@ function AiPlatform() {
       <path className="sketch-line sketch-tech" d="M133 201 C174 188 220 194 262 208" />
       <path className="sketch-line sketch-tech" d="M112 139 C139 147 164 151 197 178" />
       <path className="sketch-line sketch-tech" d="M184 137 C201 120 213 116 231 116" />
+      <path className="sketch-construction" d="M76 84 L126 84 L126 178 L76 178 Z" />
+      <path className="sketch-construction" d="M234 92 L300 92 L300 184 L234 184 Z" />
       <path className="sketch-line sketch-fine" d="M72 122 L112 122 L112 160" />
       <path className="sketch-line sketch-fine" d="M294 132 L318 132 L318 163" />
       <path className="sketch-line sketch-fine" d="M104 112 L134 112 L134 143" />
@@ -261,6 +301,7 @@ function AiPlatform() {
       <path className="sketch-line sketch-vessel" d="M125 73 C135 96 145 112 180 114 C216 111 230 95 239 73" />
       <path className="sketch-line sketch-vessel-detail" d="M139 82 C163 91 200 91 225 82" />
       <path className="sketch-line sketch-vessel-detail" d="M147 98 C165 105 198 105 216 98" />
+      <path className="sketch-paper-hatch" d="M135 75 L155 68 M164 84 L191 75 M197 84 L225 75" />
       <path className="sketch-line sketch-depth" d="M161 88 C166 102 171 109 181 114" />
       <path className="sketch-line sketch-depth" d="M205 88 C200 102 194 109 181 114" />
       <circle className="sketch-node" cx="231" cy="116" r="4" />
@@ -275,6 +316,8 @@ function SpatialConsultation() {
       <path className="sketch-line sketch-diagram" d="M182 64 L182 205" />
       <path className="sketch-line sketch-diagram" d="M98 78 L263 78" />
       <path className="sketch-line sketch-diagram" d="M98 194 L263 194" />
+      <path className="sketch-construction" d="M182 78 m-82 0 a82 82 0 1 0 164 0 a82 82 0 1 0 -164 0" />
+      <path className="sketch-construction" d="M182 136 m-58 0 a58 58 0 1 0 116 0 a58 58 0 1 0 -116 0" />
       <path className="sketch-line sketch-diagram" d="M100 97 C143 80 222 81 263 99" />
       <path className="sketch-line sketch-diagram" d="M103 141 C149 129 220 130 259 143" />
       <path className="sketch-fill sketch-stone" d="M130 131 C145 104 184 105 196 132 C210 162 174 183 148 171 C130 162 122 148 130 131 Z" />
@@ -289,6 +332,7 @@ function SpatialConsultation() {
       <path className="sketch-line sketch-wash-line" d="M174 158 C199 150 222 151 245 160" />
       <path className="sketch-line sketch-hatch" d="M143 137 C158 128 177 130 194 143" />
       <path className="sketch-line sketch-hatch" d="M143 151 C159 143 176 145 190 154" />
+      <path className="sketch-paper-hatch" d="M136 127 L160 116 M143 165 L197 142 M204 189 L231 165" />
       <circle className="sketch-node" cx="182" cy="64" r="4" />
       <circle className="sketch-node motion-pulse-subtle" cx="286" cy="170" r="4" />
       <circle className="sketch-node" cx="78" cy="170" r="4" />
@@ -306,6 +350,8 @@ function B2BNetwork() {
       <path className="sketch-line sketch-tech" d="M118 134 C145 118 161 111 188 84" />
       <path className="sketch-line sketch-tech" d="M179 145 C188 126 206 111 236 98" />
       <path className="sketch-line sketch-tech" d="M240 181 C253 160 274 134 302 100" />
+      <path className="sketch-construction" d="M62 92 L134 92 L134 180 L62 180 Z" />
+      <path className="sketch-construction" d="M224 74 L314 74 L314 186 L224 186 Z" />
       <path className="sketch-line sketch-fine" d="M86 80 L122 80 L122 116" />
       <path className="sketch-line sketch-fine" d="M292 78 L320 78 L320 114" />
       <path className="sketch-line sketch-fine" d="M106 155 L142 155 L142 183" />
