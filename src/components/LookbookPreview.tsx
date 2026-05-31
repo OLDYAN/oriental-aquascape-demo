@@ -1,5 +1,5 @@
-import { lookbookStudies } from '../data/lookbook';
 import type { VisualMotif, VisualTone } from '../data/visualMotifs';
+import type { SiteContent } from '../i18n/content';
 import { IllustrationPanel } from './IllustrationPanel';
 
 const studyVisuals: Record<string, { motif: VisualMotif; tone: VisualTone }> = {
@@ -8,19 +8,24 @@ const studyVisuals: Record<string, { motif: VisualMotif; tone: VisualTone }> = {
   'heritage-vessel-aquascape': { motif: 'heritage-aquarium', tone: 'heritage' },
 };
 
-export function LookbookPreview() {
+type LookbookPreviewProps = {
+  content: SiteContent;
+  showRouteCta?: boolean;
+};
+
+export function LookbookPreview({ content, showRouteCta = true }: LookbookPreviewProps) {
   return (
     <section className="lookbook-section section-shell" id="studies" aria-labelledby="lookbook-title">
       <div className="section-header">
         <div>
-          <p className="section-kicker">Concept studies</p>
-          <h2 id="lookbook-title">Quiet studies for future spatial direction.</h2>
+          <p className="section-kicker">{content.lookbookPreview.kicker}</p>
+          <h2 id="lookbook-title">{content.lookbookPreview.title}</h2>
         </div>
-        <p>These are concept studies for tone, composition, and material rhythm.</p>
+        <p>{content.lookbookPreview.body}</p>
       </div>
 
       <div className="study-grid">
-        {lookbookStudies.map((study, index) => (
+        {content.lookbookPreview.studies.map((study, index) => (
           <article className="study-card" key={study.id}>
             <IllustrationPanel
               label={study.label}
@@ -38,6 +43,14 @@ export function LookbookPreview() {
           </article>
         ))}
       </div>
+
+      {showRouteCta ? (
+        <div className="section-action">
+          <a className="button button-secondary" href="#/lookbook">
+            {content.lookbookPreview.cta}
+          </a>
+        </div>
+      ) : null}
     </section>
   );
 }

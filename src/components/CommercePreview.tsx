@@ -1,34 +1,19 @@
 import type { VisualMotif, VisualTone } from '../data/visualMotifs';
+import type { SiteContent } from '../i18n/content';
 import { IllustrationPanel } from './IllustrationPanel';
 
-const previewItems = [
-  {
-    title: 'Heritage Vessels',
-    description: 'Vessel-led display directions for water, material, and daily ritual.',
-    motif: 'heritage-aquarium' as VisualMotif,
-    tone: 'heritage' as VisualTone,
-  },
-  {
-    title: 'Aquatic Plants',
-    description: 'Plant selections for calm aquascape composition and atmosphere.',
-    motif: 'aquatic-plant' as VisualMotif,
-    tone: 'plant' as VisualTone,
-  },
-  {
-    title: 'Aquarium Equipment',
-    description: 'Quiet infrastructure for stable, visually restrained living systems.',
-    motif: 'equipment-study' as VisualMotif,
-    tone: 'technology' as VisualTone,
-  },
-  {
-    title: 'Decorative Pieces',
-    description: 'Ceramic, jade, and other decorative pieces for spatial presence.',
-    motif: 'decorative-pieces' as VisualMotif,
-    tone: 'heritage' as VisualTone,
-  },
+const previewVisuals: Array<{ motif: VisualMotif; tone: VisualTone }> = [
+  { motif: 'heritage-aquarium', tone: 'heritage' },
+  { motif: 'aquatic-plant', tone: 'plant' },
+  { motif: 'equipment-study', tone: 'technology' },
+  { motif: 'decorative-pieces', tone: 'heritage' },
 ];
 
-export function CommercePreview() {
+type CommercePreviewProps = {
+  content: SiteContent;
+};
+
+export function CommercePreview({ content }: CommercePreviewProps) {
   return (
     <section
       className="commerce-section section-shell"
@@ -37,33 +22,36 @@ export function CommercePreview() {
     >
       <div className="section-header">
         <div>
-          <p className="section-kicker">Shop preview</p>
-          <h2 id="commerce-preview-title">Curated product worlds, not a marketplace grid.</h2>
+          <p className="section-kicker">{content.commercePreview.kicker}</p>
+          <h2 id="commerce-preview-title">{content.commercePreview.title}</h2>
         </div>
-        <p>
-          The expanded catalog below remains static and demo-only, with no Shopify embeds,
-          inventory claims, or real checkout.
-        </p>
+        <p>{content.commercePreview.body}</p>
       </div>
 
       <div className="commerce-grid">
-        {previewItems.map((item) => (
+        {content.commercePreview.items.map((item, index) => (
           <article className="commerce-item" key={item.title}>
             <IllustrationPanel
-              label="Shop preview"
+              label={content.commercePreview.kicker}
               caption={item.title}
-              motif={item.motif}
-              tone={item.tone}
+              motif={previewVisuals[index].motif}
+              tone={previewVisuals[index].tone}
               size="compact"
               className="commerce-illustration"
             />
             <div className="commerce-content">
-              <p className="section-kicker">Shop preview</p>
+              <p className="section-kicker">{content.commercePreview.kicker}</p>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="section-action">
+        <a className="button button-primary" href="#/shop">
+          {content.commercePreview.cta}
+        </a>
       </div>
     </section>
   );

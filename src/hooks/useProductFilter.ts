@@ -15,7 +15,10 @@ function productMatchesFilter(product: Product, activeFilter: ProductFilter) {
   return product.category === activeFilter;
 }
 
-export function useProductFilter(allProducts: Product[]) {
+export function useProductFilter(
+  allProducts: Product[],
+  getSearchText?: (product: Product) => string,
+) {
   const [activeFilter, setActiveFilter] = useState<ProductFilter>('All');
   const [query, setQuery] = useState('');
 
@@ -24,22 +27,24 @@ export function useProductFilter(allProducts: Product[]) {
 
     return allProducts.filter((product) => {
       const matchesCategory = productMatchesFilter(product, activeFilter);
-      const searchableText = [
-        product.name,
-        product.category,
-        product.description,
-        product.material,
-        product.useCase,
-        product.availability,
-        ...product.tags,
-      ]
-        .join(' ')
-        .toLowerCase();
+      const searchableText = (
+        getSearchText
+          ? getSearchText(product)
+          : [
+              product.name,
+              product.category,
+              product.description,
+              product.material,
+              product.useCase,
+              product.availability,
+              ...product.tags,
+            ].join(' ')
+      ).toLowerCase();
       const matchesQuery = normalizedQuery.length === 0 || searchableText.includes(normalizedQuery);
 
       return matchesCategory && matchesQuery;
     });
-  }, [activeFilter, allProducts, query]);
+  }, [activeFilter, allProducts, getSearchText, query]);
 
   return {
     activeFilter,

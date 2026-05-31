@@ -1,26 +1,28 @@
+import type { SiteContent } from '../i18n/content';
 import { IllustrationPanel } from './IllustrationPanel';
 
-export function Hero() {
+type HeroProps = {
+  content: SiteContent;
+};
+
+export function Hero({ content }: HeroProps) {
   return (
     <section className="hero-section" id="vision" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <h1 id="hero-title">Eastern Aquatic Living</h1>
-        <p className="hero-subheadline">
-          Living water, Heritage Aquariums, refined decorative pieces, and AI-assisted
-          consultation for contemporary spaces.
-        </p>
+        <h1 id="hero-title">{content.hero.title}</h1>
+        <p className="hero-subheadline">{content.hero.body}</p>
         <div className="button-row" aria-label="Primary homepage actions">
-          <a className="button button-primary" href="#studies">
-            Explore Studies
+          <a className="button button-primary" href="#/shop">
+            {content.hero.shopCta}
           </a>
-          <a className="button button-secondary" href="#consultation-builder">
-            Begin Consultation
+          <a className="button button-secondary" href="#/consultation">
+            {content.hero.consultationCta}
           </a>
         </div>
       </div>
       <IllustrationPanel
-        label="Living water"
-        caption="Vessel, waterline, jade, and intelligence layer"
+        label={content.hero.label}
+        caption={content.hero.caption}
         motif="hero-water-vessel"
         tone="water"
         size="large"

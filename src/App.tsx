@@ -1,21 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CartDrawer } from './components/CartDrawer';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { StudioStatement } from './components/StudioStatement';
-import { CategoryIndex } from './components/CategoryIndex';
-import { LookbookPreview } from './components/LookbookPreview';
-import { CommercePreview } from './components/CommercePreview';
 import { ProductDrawer } from './components/ProductDrawer';
-import { PlatformPreview } from './components/PlatformPreview';
-import { ConsultationPreview } from './components/ConsultationPreview';
-import { ConsultationBuilder } from './components/ConsultationBuilder';
-import { Shop } from './components/Shop';
 import { products, type Product } from './data/products';
 import { useCart } from './hooks/useCart';
+import { useHashRoute } from './hooks/useHashRoute';
+import { useLanguage } from './hooks/useLanguage';
+import { siteContent } from './i18n/content';
+import { ConsultationPage } from './pages/ConsultationPage';
+import { HomePage } from './pages/HomePage';
+import { LookbookPage } from './pages/LookbookPage';
+import { ShopPage } from './pages/ShopPage';
+import { StoryPage } from './pages/StoryPage';
 
 function App() {
+  const route = useHashRoute();
+  const { language, toggleLanguage } = useLanguage();
+  const content = siteContent[language];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const {
@@ -29,38 +31,68 @@ function App() {
     clearCart,
   } = useCart(products);
 
+  useEffect(() => {
+    document.title = content.metaTitle;
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [content.metaTitle, route]);
+
   function handleAddToCart(product: Product) {
     addItem(product);
     setIsCartOpen(true);
   }
 
-  return (
-    <div className="app-shell">
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
-      <Header cartCount={totalItems} onCartOpen={() => setIsCartOpen(true)} />
-      <main id="main-content">
-        <Hero />
-        <StudioStatement />
-        <CategoryIndex />
-        <LookbookPreview />
-        <CommercePreview />
-        <Shop
+  function renderRoute() {
+    if (route === 'shop') {
+      return (
+        <ShopPage
           products={products}
           cartCount={totalItems}
+          content={content}
+          language={language}
           onAddToCart={handleAddToCart}
           onOpenCart={() => setIsCartOpen(true)}
           onViewProduct={setSelectedProduct}
         />
-        <PlatformPreview />
-        <ConsultationPreview />
-        <ConsultationBuilder />
+      );
+    }
+
+    if (route === 'consultation') {
+      return <ConsultationPage content={content} language={language} />;
+    }
+
+    if (route === 'story') {
+      return <StoryPage content={content} />;
+    }
+
+    if (route === 'lookbook') {
+      return <LookbookPage content={content} />;
+    }
+
+    return <HomePage content={content} />;
+  }
+
+  return (
+    <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        {language === 'zh' ? '跳到主要内容' : 'Skip to main content'}
+      </a>
+      <Header
+        cartCount={totalItems}
+        content={content}
+        language={language}
+        route={route}
+        onCartOpen={() => setIsCartOpen(true)}
+        onToggleLanguage={toggleLanguage}
+      />
+      <main id="main-content" className={`route-${route}`}>
+        {renderRoute()}
       </main>
-      <Footer />
+      <Footer content={content} />
       <ProductDrawer
         product={selectedProduct}
         isOpen={selectedProduct !== null}
+        content={content}
+        language={language}
         onAddToCart={handleAddToCart}
         onClose={() => setSelectedProduct(null)}
       />
@@ -68,6 +100,8 @@ function App() {
         isOpen={isCartOpen}
         items={items}
         totalCents={totalCents}
+        content={content}
+        language={language}
         onClose={() => setIsCartOpen(false)}
         onIncreaseItem={increaseItem}
         onDecreaseItem={decreaseItem}

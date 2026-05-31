@@ -1,6 +1,11 @@
+import type { SiteContent } from '../i18n/content';
 import { IllustrationPanel } from './IllustrationPanel';
 
-export function ConsultationPreview() {
+type ConsultationPreviewProps = {
+  content: SiteContent;
+};
+
+export function ConsultationPreview({ content }: ConsultationPreviewProps) {
   return (
     <section
       className="consultation-section section-shell"
@@ -9,41 +14,36 @@ export function ConsultationPreview() {
     >
       <div className="consultation-panel">
         <div>
-          <p className="section-kicker">Consultation</p>
-          <h2 id="consultation-title">I Ching & Feng Shui Spatial Consultation</h2>
-          <p>
-            Consultation considers placement, balance, material, atmosphere, and symbolic
-            meaning. It does not promise financial, medical, or personal outcomes.
-          </p>
-          <a className="button button-secondary" href="#consultation-builder">
-            Build a Consultation Brief
+          <p className="section-kicker">{content.consultationTeaser.kicker}</p>
+          <h2 id="consultation-title">{content.consultationTeaser.title}</h2>
+          <p>{content.consultationTeaser.body}</p>
+          <a className="button button-secondary" href="#/consultation">
+            {content.consultationTeaser.cta}
           </a>
         </div>
-        <div className="consultation-diagram" aria-label="Consultation considerations">
+        <div className="consultation-diagram" aria-label={content.consultationTeaser.diagramLabel}>
           <IllustrationPanel
-            label="Spatial diagram"
-            caption="Placement, balance, material"
+            label={content.consultationTeaser.visualLabel}
+            caption={content.consultationTeaser.visualCaption}
             motif="spatial-consultation"
             tone="spatial"
             size="compact"
             className="consultation-illustration"
           />
-          <span>Placement</span>
-          <span>Balance</span>
-          <span>Material</span>
-          <span>Atmosphere</span>
-          <span>Symbolic meaning</span>
+          {content.consultationTeaser.considerations.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
       </div>
 
       <div className="final-cta" id="final-cta" aria-labelledby="final-cta-title">
-        <h2 id="final-cta-title">Begin a living water project.</h2>
+        <h2 id="final-cta-title">{content.consultationTeaser.finalTitle}</h2>
         <div className="button-row">
-          <a className="button button-primary" href="#consultation-builder">
-            Build a Consultation Brief
+          <a className="button button-primary" href="#/consultation">
+            {content.consultationTeaser.finalPrimary}
           </a>
-          <a className="button button-secondary" href="#shop-preview">
-            Explore Shop Preview
+          <a className="button button-secondary" href="#/lookbook">
+            {content.consultationTeaser.finalSecondary}
           </a>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { VisualMotif } from './visualMotifs';
 
 export type ProductCategory =
-  | 'Heritage Vessels'
+  | 'Heritage Aquariums'
   | 'Vessels & Decorative Pieces'
   | 'Aquatic Plants'
   | 'Aquarium Equipment'
@@ -39,7 +39,7 @@ export const products: Product[] = [
   {
     id: 'heritage-vessel-01',
     name: 'Heritage Vessel No. 01',
-    category: 'Heritage Vessels',
+    category: 'Heritage Aquariums',
     description:
       'A demo product study for a vessel-led Heritage Aquarium with quiet proportion and daily ritual.',
     price: 68000,

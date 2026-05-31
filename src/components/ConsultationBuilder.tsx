@@ -1,77 +1,27 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { VisualMotif, VisualTone } from '../data/visualMotifs';
+import {
+  buildLocalizedBrief,
+  getConceptDirectionLabel,
+  getLocalizedNextStep,
+  getLocalizedOptionLabel,
+  getLocalizedPathways,
+  getLocalizedSpatialNote,
+  type SiteContent,
+} from '../i18n/content';
+import type { Language } from '../i18n/types';
 import {
   buildConsultationRecommendation,
   type ConsultationSelections,
 } from '../utils/recommendations';
-import type { VisualMotif, VisualTone } from '../data/visualMotifs';
 import { IllustrationPanel } from './IllustrationPanel';
 
 type CopyState = 'idle' | 'copied' | 'manual';
 
-type OptionGroup = {
-  id: keyof ConsultationSelections;
-  label: string;
-  options: string[];
+type ConsultationBuilderProps = {
+  content: SiteContent;
+  language: Language;
 };
-
-const optionGroups: OptionGroup[] = [
-  {
-    id: 'spaceType',
-    label: 'Space type',
-    options: [
-      'Residential interior',
-      'Office / studio',
-      'Restaurant / hospitality',
-      'Retail / showroom',
-      'Designer / B2B project',
-    ],
-  },
-  {
-    id: 'preferredDirection',
-    label: 'Preferred direction',
-    options: [
-      'Minimal Eastern aquascape',
-      'Heritage vessel composition',
-      'Plant-focused living water',
-      'Equipment-forward modern setup',
-      'Decorative pieces and spatial atmosphere',
-      'AI-assisted product discovery',
-    ],
-  },
-  {
-    id: 'primaryInterest',
-    label: 'Primary interest',
-    options: [
-      'Aquascaping design',
-      'Heritage Aquariums',
-      'Aquatic plants',
-      'Aquarium equipment',
-      'Vessels & Decorative Pieces',
-      'I Ching & Feng Shui Spatial Consultation',
-      'B2B Partnership',
-    ],
-  },
-  {
-    id: 'timeline',
-    label: 'Timeline',
-    options: ['Exploring', '1-3 months', '3-6 months', 'B2B planning cycle'],
-  },
-  {
-    id: 'budgetRange',
-    label: 'Budget range',
-    options: ['Concept only', 'Entry project', 'Premium project', 'Commercial / partnership'],
-  },
-  {
-    id: 'maintenancePreference',
-    label: 'Maintenance preference',
-    options: [
-      'Low-maintenance',
-      'Balanced',
-      'High-design / specialist maintenance',
-      'Not sure yet',
-    ],
-  },
-];
 
 function getSelectionValue(
   selections: ConsultationSelections,
@@ -123,7 +73,7 @@ function getBuilderVisual(selections: ConsultationSelections): {
   return { motif: 'hero-water-vessel', tone: 'water' };
 }
 
-export function ConsultationBuilder() {
+export function ConsultationBuilder({ content, language }: ConsultationBuilderProps) {
   const [selections, setSelections] = useState<ConsultationSelections>({});
   const [copyState, setCopyState] = useState<CopyState>('idle');
   const recommendation = useMemo(
@@ -132,6 +82,21 @@ export function ConsultationBuilder() {
   );
   const builderVisual = getBuilderVisual(selections);
   const selectedCount = Object.values(selections).filter(Boolean).length;
+  const conceptDirection = getConceptDirectionLabel(recommendation.conceptDirection, language);
+  const categoryPathways =
+    language === 'en'
+      ? recommendation.categoryPathways
+      : getLocalizedPathways(recommendation.categoryPathways, language);
+  const briefText =
+    language === 'en'
+      ? recommendation.briefText
+      : buildLocalizedBrief(selections, recommendation.categoryPathways, language);
+  const suggestedNextStep =
+    language === 'en' ? recommendation.suggestedNextStep : getLocalizedNextStep(selections, language);
+  const spatialConsultationNote =
+    language === 'en'
+      ? recommendation.spatialConsultationNote
+      : getLocalizedSpatialNote(selections, language);
 
   useEffect(() => {
     if (copyState !== 'copied') {
@@ -158,7 +123,7 @@ export function ConsultationBuilder() {
     }
 
     try {
-      await navigator.clipboard.writeText(recommendation.briefText);
+      await navigator.clipboard.writeText(briefText);
       setCopyState('copied');
     } catch {
       setCopyState('manual');
@@ -178,37 +143,40 @@ export function ConsultationBuilder() {
     >
       <div className="section-header">
         <div>
-          <p className="section-kicker">AI-Assisted Discovery</p>
-          <h2 id="consultation-builder-title">Build a Consultation Brief</h2>
+          <p className="section-kicker">{content.builder.kicker}</p>
+          <h2 id="consultation-builder-title">{content.builder.title}</h2>
         </div>
-        <p>A static prototype that helps frame an initial direction before a formal consultation.</p>
+        <p>{content.builder.body}</p>
       </div>
 
       <div className="builder-grid">
-        <div className="builder-panel" aria-label="Consultation preferences">
+        <div className="builder-panel" aria-label={content.builder.preferencesLabel}>
           <div className="builder-progress">
-            <span>{selectedCount} of {optionGroups.length} preferences selected</span>
+            <span>
+              {selectedCount} of {content.builder.optionGroups.length}{' '}
+              {content.builder.progressSuffix}
+            </span>
             <button className="builder-reset" type="button" onClick={resetBuilder}>
-              Reset
+              {content.builder.reset}
             </button>
           </div>
 
-          {optionGroups.map((group) => (
+          {content.builder.optionGroups.map((group) => (
             <fieldset className="option-group" key={group.id}>
               <legend>{group.label}</legend>
               <div className="option-list">
                 {group.options.map((option) => {
-                  const isActive = getSelectionValue(selections, group.id) === option;
+                  const isActive = getSelectionValue(selections, group.id) === option.value;
 
                   return (
                     <button
                       className={`option-control ${isActive ? 'option-control-active' : ''}`}
                       type="button"
-                      key={option}
+                      key={option.value}
                       aria-pressed={isActive}
-                      onClick={() => updateSelection(group.id, option)}
+                      onClick={() => updateSelection(group.id, option.value)}
                     >
-                      {option}
+                      {option.label}
                     </button>
                   );
                 })}
@@ -219,8 +187,8 @@ export function ConsultationBuilder() {
 
         <div className="builder-results">
           <IllustrationPanel
-            label="AI-Assisted Discovery Prototype"
-            caption={recommendation.conceptDirection}
+            label={content.builder.visualLabel}
+            caption={conceptDirection}
             motif={builderVisual.motif}
             tone={builderVisual.tone}
             size="default"
@@ -228,33 +196,45 @@ export function ConsultationBuilder() {
           />
 
           <div className="brief-output" aria-live="polite">
-            <p className="section-kicker">Consultation Brief</p>
-            <h3>Project Direction</h3>
-            <p>{recommendation.briefText}</p>
+            <p className="section-kicker">{content.builder.outputKicker}</p>
+            <h3>{content.builder.outputTitle}</h3>
+            <p>{briefText}</p>
 
             <dl className="brief-detail-list">
               <div>
-                <dt>Project setting</dt>
-                <dd>{selections.spaceType ?? 'Select a space type'}</dd>
+                <dt>{content.builder.projectSetting}</dt>
+                <dd>
+                  {getLocalizedOptionLabel(language, 'spaceType', selections.spaceType) ??
+                    content.builder.fallbackSpace}
+                </dd>
               </div>
               <div>
-                <dt>Design Direction</dt>
-                <dd>{selections.preferredDirection ?? 'Select a preferred direction'}</dd>
+                <dt>{content.builder.designDirection}</dt>
+                <dd>
+                  {getLocalizedOptionLabel(
+                    language,
+                    'preferredDirection',
+                    selections.preferredDirection,
+                  ) ?? content.builder.fallbackDirection}
+                </dd>
               </div>
               <div>
-                <dt>Primary focus</dt>
-                <dd>{selections.primaryInterest ?? 'Select a primary interest'}</dd>
+                <dt>{content.builder.primaryFocus}</dt>
+                <dd>
+                  {getLocalizedOptionLabel(language, 'primaryInterest', selections.primaryInterest) ??
+                    content.builder.fallbackFocus}
+                </dd>
               </div>
               <div>
-                <dt>Suggested next step</dt>
-                <dd>{recommendation.suggestedNextStep}</dd>
+                <dt>{content.builder.suggestedNextStep}</dt>
+                <dd>{suggestedNextStep}</dd>
               </div>
             </dl>
 
             <div className="recommendation-block">
-              <h4>Recommended categories</h4>
+              <h4>{content.builder.recommendedCategories}</h4>
               <div className="recommendation-list">
-                {recommendation.categoryPathways.map((pathway) => (
+                {categoryPathways.map((pathway) => (
                   <span className="recommendation-chip" key={pathway}>
                     {pathway}
                   </span>
@@ -263,34 +243,29 @@ export function ConsultationBuilder() {
             </div>
 
             <div className="recommendation-block">
-              <h4>Suggested concept direction</h4>
-              <p>{recommendation.conceptDirection}</p>
+              <h4>{content.builder.conceptDirection}</h4>
+              <p>{conceptDirection}</p>
             </div>
 
             <div className="recommendation-block">
-              <h4>Spatial Consultation note</h4>
-              <p>{recommendation.spatialConsultationNote}</p>
+              <h4>{content.builder.spatialNote}</h4>
+              <p>{spatialConsultationNote}</p>
             </div>
 
-            <p className="prototype-note">
-              This prototype does not submit a request or create a final design proposal. It is a
-              static recommendation prototype for early project framing.
-            </p>
+            <p className="prototype-note">{content.builder.prototypeNote}</p>
 
             <div className="brief-actions">
               <button className="button button-primary" type="button" onClick={copyBrief}>
-                Copy brief
+                {content.builder.copy}
               </button>
               <button className="button button-secondary" type="button" onClick={resetBuilder}>
-                Reset
+                {content.builder.reset}
               </button>
             </div>
 
             {copyState !== 'idle' ? (
               <p className="copy-state">
-                {copyState === 'copied'
-                  ? 'Brief copied.'
-                  : 'Clipboard is unavailable. Copy the brief text manually.'}
+                {copyState === 'copied' ? content.builder.copied : content.builder.manual}
               </p>
             ) : null}
           </div>

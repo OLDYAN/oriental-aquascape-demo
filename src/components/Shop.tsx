@@ -1,10 +1,13 @@
+import { useCallback } from 'react';
 import type { Product } from '../data/products';
+import { getProductCopy, type SiteContent } from '../i18n/content';
+import type { Language } from '../i18n/types';
 import { useProductFilter, type ProductFilter } from '../hooks/useProductFilter';
 import { ProductCard } from './ProductCard';
 
 const filterOptions: ProductFilter[] = [
   'All',
-  'Heritage Vessels',
+  'Heritage Aquariums',
   'Aquatic Plants',
   'Aquarium Equipment',
   'Vessels & Decorative Pieces',
@@ -15,6 +18,8 @@ const filterOptions: ProductFilter[] = [
 type ShopProps = {
   products: Product[];
   cartCount: number;
+  content: SiteContent;
+  language: Language;
   onAddToCart: (product: Product) => void;
   onOpenCart: () => void;
   onViewProduct: (product: Product) => void;
@@ -23,28 +28,51 @@ type ShopProps = {
 export function Shop({
   products,
   cartCount,
+  content,
+  language,
   onAddToCart,
   onOpenCart,
   onViewProduct,
 }: ShopProps) {
+  const localizedFilters = content.shop.filters as Record<string, string>;
+  const getSearchText = useCallback(
+    (product: Product) => {
+      const localizedProduct = getProductCopy(product, language);
+
+      return [
+        product.name,
+        product.category,
+        product.description,
+        product.material,
+        product.useCase,
+        product.availability,
+        ...product.tags,
+        localizedProduct.name,
+        localizedProduct.category,
+        localizedProduct.description,
+        localizedProduct.material,
+        localizedProduct.useCase,
+        localizedProduct.availability,
+        ...localizedProduct.tags,
+      ].join(' ');
+    },
+    [language],
+  );
   const { activeFilter, filteredProducts, query, resultCount, setActiveFilter, setQuery } =
-    useProductFilter(products);
+    useProductFilter(products, getSearchText);
 
   return (
     <section className="shop-section section-shell" id="shop-preview" aria-labelledby="shop-title">
       <div className="section-header">
         <div>
-          <p className="section-kicker">Static catalog prototype</p>
-          <h2 id="shop-title">Curated Commerce Preview</h2>
+          <p className="section-kicker">{content.shop.kicker}</p>
+          <h2 id="shop-title">{content.shop.title}</h2>
         </div>
-        <p>
-          A prototype catalog for Heritage Aquariums, aquatic plants, equipment, and decorative
-          pieces. Checkout is not enabled.
-        </p>
+        <p>{content.shop.body}</p>
       </div>
 
       <div className="shop-toolbar">
-        <div className="filter-group" aria-label="Product category filters">
+        <div className="filter-group" aria-label={content.shop.filtersLabel}>
           {filterOptions.map((filter) => (
             <button
               className={`filter-chip ${activeFilter === filter ? 'is-active' : ''}`}
@@ -53,36 +81,38 @@ export function Shop({
               onClick={() => setActiveFilter(filter)}
               aria-pressed={activeFilter === filter}
             >
-              {filter}
+              {localizedFilters[filter] ?? filter}
             </button>
           ))}
         </div>
         <div className="shop-search-wrap">
           <label className="sr-only" htmlFor="product-search">
-            Search products
+            {content.shop.searchLabel}
           </label>
           <input
             className="shop-search"
             id="product-search"
             type="search"
-            placeholder="Search vessels, plants, equipment..."
+            placeholder={content.shop.searchPlaceholder}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
           <button
             className="cart-inline-button"
             type="button"
-            aria-label={`Open cart preview with ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`}
+            aria-label={`${content.header.cartAria} ${cartCount}`}
             onClick={onOpenCart}
           >
-            Cart ({cartCount})
+            {content.header.cart} ({cartCount})
           </button>
         </div>
       </div>
 
       <div className="shop-meta" aria-live="polite">
-        <span>{resultCount} catalog items</span>
-        <span>Demo-only cart and disabled checkout</span>
+        <span>
+          {resultCount} {content.shop.itemLabel}
+        </span>
+        <span>{content.shop.cartNote}</span>
       </div>
 
       {filteredProducts.length > 0 ? (
@@ -91,6 +121,8 @@ export function Shop({
             <ProductCard
               key={product.id}
               product={product}
+              content={content}
+              language={language}
               onAddToCart={onAddToCart}
               onViewProduct={onViewProduct}
             />
@@ -98,8 +130,8 @@ export function Shop({
         </div>
       ) : (
         <div className="empty-products">
-          <h3>No matching catalog items.</h3>
-          <p>Try a broader search or return to all categories.</p>
+          <h3>{content.shop.emptyTitle}</h3>
+          <p>{content.shop.emptyBody}</p>
         </div>
       )}
     </section>

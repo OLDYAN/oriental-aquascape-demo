@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react';
 import type { Product } from '../data/products';
 import type { VisualTone } from '../data/visualMotifs';
+import { getProductCopy, type SiteContent } from '../i18n/content';
+import type { Language } from '../i18n/types';
 import { IllustrationPanel } from './IllustrationPanel';
 
 type ProductDrawerProps = {
   product: Product | null;
   isOpen: boolean;
+  content: SiteContent;
+  language: Language;
   onAddToCart: (product: Product) => void;
   onClose: () => void;
 };
@@ -33,13 +37,16 @@ function getProductTone(product: Product): VisualTone {
 export function ProductDrawer({
   product,
   isOpen,
+  content,
+  language,
   onAddToCart,
   onClose,
 }: ProductDrawerProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const localizedProduct = product ? getProductCopy(product, language) : null;
   const disabledActionLabel = product?.isLiveGoods
-    ? 'Future category / consultation required'
-    : 'Consultation required';
+    ? content.product.futureDisabled
+    : content.product.consultationRequired;
 
   useEffect(() => {
     if (!isOpen) {
@@ -59,7 +66,7 @@ export function ProductDrawer({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen || !product) {
+  if (!isOpen || !product || !localizedProduct) {
     return null;
   }
 
@@ -73,21 +80,21 @@ export function ProductDrawer({
         onClick={(event) => event.stopPropagation()}
       >
         <div className="drawer-header">
-          <p className="section-kicker">{product.category}</p>
+          <p className="section-kicker">{localizedProduct.category}</p>
           <button
             className="drawer-close"
             type="button"
-            aria-label="Close product details"
+            aria-label={content.product.close}
             onClick={onClose}
             ref={closeButtonRef}
           >
-            Close
+            {language === 'zh' ? '关闭' : 'Close'}
           </button>
         </div>
 
         <IllustrationPanel
-          label={product.category}
-          caption={product.isLiveGoods ? 'Future category' : product.name}
+          label={localizedProduct.category}
+          caption={product.isLiveGoods ? content.product.futureCaption : localizedProduct.name}
           motif={product.visualMotif}
           tone={getProductTone(product)}
           size="default"
@@ -95,33 +102,30 @@ export function ProductDrawer({
         />
 
         <div className="drawer-copy">
-          <h2 id="product-drawer-title">{product.name}</h2>
-          <p>{product.description}</p>
+          <h2 id="product-drawer-title">{localizedProduct.name}</h2>
+          <p>{localizedProduct.description}</p>
         </div>
 
         <dl className="product-spec-list">
           <div>
-            <dt>Material</dt>
-            <dd>{product.material}</dd>
+            <dt>{content.product.material}</dt>
+            <dd>{localizedProduct.material}</dd>
           </div>
           <div>
-            <dt>Use case</dt>
-            <dd>{product.useCase}</dd>
+            <dt>{content.product.useCase}</dt>
+            <dd>{localizedProduct.useCase}</dd>
           </div>
           <div>
-            <dt>Availability</dt>
-            <dd>{product.availability}</dd>
+            <dt>{content.product.availability}</dt>
+            <dd>{localizedProduct.availability}</dd>
           </div>
           <div>
-            <dt>Tags</dt>
-            <dd>{product.tags.join(', ')}</dd>
+            <dt>{content.product.tags}</dt>
+            <dd>{localizedProduct.tags.join(', ')}</dd>
           </div>
         </dl>
 
-        <p className="prototype-note">
-          This is a static prototype. It does not process payments, reserve inventory, or ship
-          products.
-        </p>
+        <p className="prototype-note">{content.product.prototypeNote}</p>
 
         {product.isPurchasable ? (
           <button
@@ -132,7 +136,7 @@ export function ProductDrawer({
               onClose();
             }}
           >
-            Add to Cart
+            {content.product.add}
           </button>
         ) : (
           <button className="button button-secondary drawer-action" type="button" disabled>

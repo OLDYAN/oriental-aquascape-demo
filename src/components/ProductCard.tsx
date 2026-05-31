@@ -1,27 +1,31 @@
 import type { Product } from '../data/products';
 import type { VisualTone } from '../data/visualMotifs';
+import { getProductCopy, type SiteContent } from '../i18n/content';
+import type { Language } from '../i18n/types';
 import { IllustrationPanel } from './IllustrationPanel';
 
 type ProductCardProps = {
   product: Product;
+  content: SiteContent;
+  language: Language;
   onAddToCart: (product: Product) => void;
   onViewProduct: (product: Product) => void;
 };
 
-function getActionLabel(product: Product) {
+function getActionLabel(product: Product, content: SiteContent) {
   if (product.isPurchasable) {
-    return 'Add to Cart';
+    return content.product.add;
   }
 
   if (product.isLiveGoods) {
-    return 'Future Category';
+    return content.product.future;
   }
 
   if (product.requiresConsultation) {
-    return 'Consultation Required';
+    return content.product.consultationRequired;
   }
 
-  return 'Details';
+  return content.product.details;
 }
 
 function getProductTone(product: Product): VisualTone {
@@ -44,8 +48,15 @@ function getProductTone(product: Product): VisualTone {
   return product.visualTone === 'stone' ? 'stone' : 'heritage';
 }
 
-export function ProductCard({ product, onAddToCart, onViewProduct }: ProductCardProps) {
-  const actionLabel = getActionLabel(product);
+export function ProductCard({
+  product,
+  content,
+  language,
+  onAddToCart,
+  onViewProduct,
+}: ProductCardProps) {
+  const actionLabel = getActionLabel(product, content);
+  const localizedProduct = getProductCopy(product, language);
 
   function handleActionClick() {
     if (product.isPurchasable) {
@@ -62,22 +73,22 @@ export function ProductCard({ product, onAddToCart, onViewProduct }: ProductCard
         className="product-card-main"
         type="button"
         onClick={() => onViewProduct(product)}
-        aria-label={`Open detail drawer for ${product.name}`}
+        aria-label={`${content.product.openDetails} ${localizedProduct.name}`}
       >
         <IllustrationPanel
-          label={product.category}
-          caption={product.isLiveGoods ? 'Future category' : product.name}
+          label={localizedProduct.category}
+          caption={product.isLiveGoods ? content.product.futureCaption : localizedProduct.name}
           motif={product.visualMotif}
           tone={getProductTone(product)}
           size="compact"
           className="product-illustration"
         />
         <span className="product-card-content">
-          <span className="product-category">{product.category}</span>
-          <span className="product-title">{product.name}</span>
-          <span className="product-description">{product.description}</span>
+          <span className="product-category">{localizedProduct.category}</span>
+          <span className="product-title">{localizedProduct.name}</span>
+          <span className="product-description">{localizedProduct.description}</span>
           <span className="product-price">
-            {product.isPurchasable ? product.displayPrice : product.availability}
+            {product.isPurchasable ? localizedProduct.displayPrice : localizedProduct.availability}
           </span>
         </span>
       </button>
@@ -87,8 +98,8 @@ export function ProductCard({ product, onAddToCart, onViewProduct }: ProductCard
           type="button"
           aria-label={
             product.isPurchasable
-              ? `Add ${product.name} to cart`
-              : `Review availability for ${product.name}`
+              ? `${content.product.addAria} ${localizedProduct.name}`
+              : `${content.product.reviewAria} ${localizedProduct.name}`
           }
           onClick={handleActionClick}
         >
@@ -97,10 +108,10 @@ export function ProductCard({ product, onAddToCart, onViewProduct }: ProductCard
         <button
           className="product-detail-link"
           type="button"
-          aria-label={`Read details for ${product.name}`}
+          aria-label={`${content.product.readDetails} ${localizedProduct.name}`}
           onClick={() => onViewProduct(product)}
         >
-          Details
+          {content.product.details}
         </button>
       </div>
     </article>

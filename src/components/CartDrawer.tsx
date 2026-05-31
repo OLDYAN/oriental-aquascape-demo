@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import { getProductCopy, type SiteContent } from '../i18n/content';
+import type { Language } from '../i18n/types';
 import type { CartItem } from '../hooks/useCart';
 import { formatCurrency } from '../utils/formatCurrency';
 
@@ -6,6 +8,8 @@ type CartDrawerProps = {
   isOpen: boolean;
   items: CartItem[];
   totalCents: number;
+  content: SiteContent;
+  language: Language;
   onClose: () => void;
   onIncreaseItem: (productId: string) => void;
   onDecreaseItem: (productId: string) => void;
@@ -17,6 +21,8 @@ export function CartDrawer({
   isOpen,
   items,
   totalCents,
+  content,
+  language,
   onClose,
   onIncreaseItem,
   onDecreaseItem,
@@ -57,42 +63,43 @@ export function CartDrawer({
         onClick={(event) => event.stopPropagation()}
       >
         <div className="drawer-header">
-          <p className="section-kicker">Demo cart</p>
+          <p className="section-kicker">{content.cart.kicker}</p>
           <button
             className="drawer-close"
             type="button"
-            aria-label="Close cart"
+            aria-label={content.cart.close}
             onClick={onClose}
             ref={closeButtonRef}
           >
-            Close
+            {language === 'zh' ? '关闭' : 'Close'}
           </button>
         </div>
 
         <div className="drawer-copy">
-          <h2 id="cart-drawer-title">Cart Preview</h2>
-          <p>This demo does not process payments, reserve inventory, or ship products.</p>
+          <h2 id="cart-drawer-title">{content.cart.title}</h2>
+          <p>{content.cart.note}</p>
         </div>
 
         {items.length > 0 ? (
           <>
-            <ul className="cart-list" aria-label="Cart items">
+            <ul className="cart-list" aria-label={content.cart.itemsLabel}>
               {items.map((item) => {
                 const subtotal = item.product.price * item.quantity;
+                const localizedProduct = getProductCopy(item.product, language);
 
                 return (
                   <li className="cart-item" key={item.product.id}>
                     <div className="cart-item-copy">
-                      <h3>{item.product.name}</h3>
+                      <h3>{localizedProduct.name}</h3>
                       <p>
-                        {formatCurrency(item.product.price)} each / Subtotal{' '}
-                        {formatCurrency(subtotal)}
+                        {formatCurrency(item.product.price)} {content.cart.each} /{' '}
+                        {content.cart.subtotal} {formatCurrency(subtotal)}
                       </p>
                     </div>
-                    <div className="quantity-controls" aria-label={`Quantity for ${item.product.name}`}>
+                    <div className="quantity-controls" aria-label={`${localizedProduct.name}`}>
                       <button
                         type="button"
-                        aria-label={`Decrease quantity for ${item.product.name}`}
+                        aria-label={`${content.cart.decrease} ${localizedProduct.name}`}
                         onClick={() => onDecreaseItem(item.product.id)}
                       >
                         -
@@ -100,7 +107,7 @@ export function CartDrawer({
                       <span>{item.quantity}</span>
                       <button
                         type="button"
-                        aria-label={`Increase quantity for ${item.product.name}`}
+                        aria-label={`${content.cart.increase} ${localizedProduct.name}`}
                         onClick={() => onIncreaseItem(item.product.id)}
                       >
                         +
@@ -109,10 +116,10 @@ export function CartDrawer({
                     <button
                       className="cart-remove"
                       type="button"
-                      aria-label={`Remove ${item.product.name} from cart`}
+                      aria-label={`${content.cart.removeAria} ${localizedProduct.name}`}
                       onClick={() => onRemoveItem(item.product.id)}
                     >
-                      Remove
+                      {content.cart.remove}
                     </button>
                   </li>
                 );
@@ -120,20 +127,20 @@ export function CartDrawer({
             </ul>
 
             <div className="cart-total">
-              <span>Total</span>
+              <span>{content.cart.total}</span>
               <strong>{formatCurrency(totalCents)}</strong>
             </div>
 
             <button className="button button-secondary" type="button" onClick={onClearCart}>
-              Clear Cart
+              {content.cart.clear}
             </button>
           </>
         ) : (
-          <p className="empty-cart">Your prototype cart is empty.</p>
+          <p className="empty-cart">{content.cart.empty}</p>
         )}
 
         <button className="button button-primary drawer-action" type="button" disabled>
-          Checkout unavailable in prototype
+          {content.cart.checkout}
         </button>
       </aside>
     </div>

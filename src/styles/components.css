@@ -34,7 +34,8 @@
 }
 
 .cart-trigger,
-.cart-inline-button {
+.cart-inline-button,
+.language-toggle {
   display: inline-flex;
   min-height: 42px;
   align-items: center;
@@ -55,6 +56,8 @@
 .cart-trigger:focus-visible,
 .cart-inline-button:hover,
 .cart-inline-button:focus-visible,
+.language-toggle:hover,
+.language-toggle:focus-visible,
 .mobile-menu-button:hover,
 .mobile-menu-button:focus-visible {
   color: var(--accent-secondary);
@@ -73,8 +76,13 @@
 }
 
 .site-nav a:hover,
-.site-nav a:focus-visible {
+.site-nav a:focus-visible,
+.site-nav a[aria-current='page'] {
   color: var(--accent-secondary);
+}
+
+.site-nav a[aria-current='page'] {
+  box-shadow: inset 0 -1px 0 var(--accent-secondary);
 }
 
 .section-kicker,
@@ -99,6 +107,27 @@
   color: var(--text-secondary);
   font-size: 1.36rem;
   line-height: 1.55;
+}
+
+.page-hero-copy h1 {
+  max-width: 780px;
+  font-size: 4.85rem;
+  line-height: 0.98;
+}
+
+.page-hero-copy p {
+  max-width: 620px;
+  margin-top: var(--space-5);
+  color: var(--text-secondary);
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+.page-note {
+  padding: var(--space-4);
+  border: var(--line-thin);
+  border-radius: var(--radius-small);
+  background: rgba(221, 228, 227, 0.34);
 }
 
 .button-row {
@@ -318,11 +347,11 @@
 }
 
 .illustration-panel-large {
-  min-height: 430px;
+  min-height: 460px;
 }
 
 .illustration-panel-compact {
-  min-height: 220px;
+  min-height: 240px;
 }
 
 .illustration-panel-technology {
@@ -387,8 +416,8 @@
 
 .sketch-motif {
   position: absolute;
-  inset: 20% 8% 20%;
-  width: 84%;
+  inset: 18% 9% 22%;
+  width: 82%;
   height: 60%;
   overflow: visible;
 }
@@ -401,6 +430,21 @@
   stroke-linejoin: round;
   stroke-width: 1.45;
   vector-effect: non-scaling-stroke;
+}
+
+.sketch-fine {
+  stroke: rgba(94, 98, 94, 0.34);
+  stroke-width: 0.85;
+}
+
+.sketch-wash-line {
+  stroke: rgba(160, 122, 99, 0.32);
+  stroke-width: 1.05;
+}
+
+.sketch-root {
+  stroke: rgba(95, 81, 56, 0.34);
+  stroke-width: 0.9;
 }
 
 .sketch-line {
@@ -531,9 +575,10 @@
 
 .drawer-illustration .sketch-motif,
 .platform-illustration .sketch-motif,
+.page-hero-illustration .sketch-motif,
 .consultation-illustration .sketch-motif,
 .discovery-visual .sketch-motif {
-  inset: 24% 8% 24%;
+  inset: 22% 8% 26%;
   width: 84%;
   height: 52%;
 }
@@ -545,9 +590,9 @@
 }
 
 .category-focus-illustration .sketch-motif {
-  inset: 28% 8% 28%;
-  width: 84%;
-  height: 44%;
+  inset: 30% 9% 31%;
+  width: 82%;
+  height: 39%;
 }
 
 @keyframes water-drift {
@@ -712,7 +757,7 @@
 
 .commerce-item .visual-panel,
 .commerce-item .illustration-panel {
-  min-height: 230px;
+  min-height: 250px;
 }
 
 .sr-only {
@@ -923,7 +968,7 @@
 
 .drawer-panel .visual-panel,
 .drawer-panel .illustration-panel {
-  min-height: 300px;
+  min-height: 330px;
 }
 
 .drawer-copy {
@@ -1343,6 +1388,18 @@
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: flex-end;
+}
+
+.story-row h2 {
+  font-size: 2.2rem;
+  line-height: 1.08;
+}
+
+.story-row p {
+  max-width: 720px;
+  color: var(--text-secondary);
+  font-size: 1.04rem;
+  line-height: 1.75;
 }
 
 @media (prefers-reduced-motion: reduce) {

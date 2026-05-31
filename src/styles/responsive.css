@@ -1,5 +1,6 @@
 @media (max-width: 1040px) {
   .hero-section,
+  .page-hero,
   .platform-section,
   .category-layout,
   .consultation-panel,
@@ -66,13 +67,18 @@
   }
 
   .section-header,
-  .studio-section {
+  .studio-section,
+  .story-row {
     grid-template-columns: 1fr;
     gap: var(--space-5);
   }
 
   .hero-copy h1 {
     font-size: 4.5rem;
+  }
+
+  .page-hero-copy h1 {
+    font-size: 3.75rem;
   }
 
   .hero-subheadline {
@@ -89,7 +95,7 @@
 
   .visual-panel,
   .illustration-panel {
-    min-height: 330px;
+    min-height: 350px;
   }
 
   .category-index-item {
@@ -112,6 +118,14 @@
 
   .hero-copy h1 {
     font-size: 3.25rem;
+  }
+
+  .page-hero-copy h1 {
+    font-size: 2.7rem;
+  }
+
+  .page-hero-copy p {
+    font-size: 1rem;
   }
 
   .section-header h2,
@@ -166,11 +180,11 @@
 
   .visual-panel,
   .illustration-panel {
-    min-height: 260px;
+    min-height: 280px;
   }
 
   .hero-illustration {
-    min-height: 320px;
+    min-height: 340px;
   }
 
   .illustration-label,
@@ -193,13 +207,15 @@
   .commerce-illustration .sketch-motif,
   .product-illustration .sketch-motif,
   .category-focus-illustration .sketch-motif {
-    inset: 28% 8% 31%;
-    height: 41%;
+    inset: 30% 9% 34%;
+    width: 82%;
+    height: 36%;
   }
 
   .consultation-illustration .sketch-motif,
+  .page-hero-illustration .sketch-motif,
   .discovery-visual .sketch-motif {
-    inset: 30% 9% 30%;
+    inset: 28% 9% 32%;
     width: 82%;
     height: 40%;
   }

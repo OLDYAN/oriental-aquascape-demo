@@ -1,17 +1,17 @@
-const footerTerms = [
-  'Heritage Aquariums',
-  'Vessels & Decorative Pieces',
-  'AI-Assisted Platform',
-  'Studies',
-  'Consultation',
-];
+import type { SiteContent } from '../i18n/content';
 
-export function Footer() {
+type FooterProps = {
+  content: SiteContent;
+};
+
+export function Footer({ content }: FooterProps) {
   return (
     <footer className="site-footer">
-      <span className="brand-mark">Oriental Aquascape</span>
+      <a className="brand-mark" href="#/">
+        {content.header.brand}
+      </a>
       <div className="footer-links" aria-label="Brand pillars">
-        {footerTerms.map((term) => (
+        {content.footer.map((term) => (
           <span key={term}>{term}</span>
         ))}
       </div>
