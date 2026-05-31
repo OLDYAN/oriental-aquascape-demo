@@ -56,7 +56,7 @@ export function CartDrawer({
   return (
     <div className="drawer-layer" role="presentation" onClick={onClose}>
       <aside
-        className="drawer-panel cart-drawer"
+        className="drawer-panel cart-drawer drawer-textured"
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-drawer-title"
@@ -71,7 +71,7 @@ export function CartDrawer({
             onClick={onClose}
             ref={closeButtonRef}
           >
-            {language === 'zh' ? '关闭' : 'Close'}
+            {content.cart.closeButton}
           </button>
         </div>
 
@@ -96,7 +96,10 @@ export function CartDrawer({
                         {content.cart.subtotal} {formatCurrency(subtotal)}
                       </p>
                     </div>
-                    <div className="quantity-controls" aria-label={`${localizedProduct.name}`}>
+                    <div
+                      className="quantity-controls"
+                      aria-label={`${content.cart.quantity}: ${localizedProduct.name}`}
+                    >
                       <button
                         type="button"
                         aria-label={`${content.cart.decrease} ${localizedProduct.name}`}
@@ -136,7 +139,7 @@ export function CartDrawer({
             </button>
           </>
         ) : (
-          <p className="empty-cart">{content.cart.empty}</p>
+          <p className="empty-cart brief-paper-surface">{content.cart.empty}</p>
         )}
 
         <button className="button button-primary drawer-action" type="button" disabled>

@@ -5,6 +5,11 @@ import type { Language } from './types';
 export const siteContent = {
   en: {
     metaTitle: 'Oriental Aquascape - Eastern Aquatic Living',
+    accessibility: {
+      skipLink: 'Skip to main content',
+      primaryActionsLabel: 'Primary homepage actions',
+      brandPillarsLabel: 'Brand pillars',
+    },
     header: {
       brand: 'Oriental Aquascape',
       homeAria: 'Oriental Aquascape home',
@@ -54,7 +59,7 @@ export const siteContent = {
         {
           id: 'high-end-ornamental-fish',
           title: 'High-End Ornamental Fish',
-          caption: 'Future/later category pending sourcing, care, and logistics standards.',
+          caption: 'Future category pending sourcing, care, and logistics standards.',
         },
         {
           id: 'aquatic-plants',
@@ -93,6 +98,7 @@ export const siteContent = {
       title: 'Quiet studies for future spatial direction.',
       body: 'These are concept studies for tone, composition, and material rhythm.',
       cta: 'View Lookbook',
+      studyCaptionPrefix: 'Study',
       studies: [
         {
           id: 'eastern-courtyard-water',
@@ -150,7 +156,7 @@ export const siteContent = {
     consultationTeaser: {
       kicker: 'Consultation',
       title: 'I Ching & Feng Shui Spatial Consultation',
-      body: 'Consultation considers placement, balance, material, atmosphere, and symbolic meaning. It does not promise financial, medical, or personal outcomes.',
+      body: 'Consultation considers placement, balance, material, atmosphere, and symbolic meaning. It does not provide financial, medical, or personal outcome guidance.',
       cta: 'Build a Consultation Brief',
       diagramLabel: 'Consultation considerations',
       visualLabel: 'Spatial diagram',
@@ -162,7 +168,7 @@ export const siteContent = {
     },
     pages: {
       shop: {
-        title: 'Curated Commerce Preview',
+        title: 'Curated Catalog Preview',
         body: 'A dedicated static catalog for planning Heritage Aquariums, aquatic plants, equipment, and refined decorative pieces.',
         note: 'Demo-only catalog. Checkout remains disabled.',
         visualLabel: 'Catalog study',
@@ -208,7 +214,7 @@ export const siteContent = {
     },
     shop: {
       kicker: 'Static catalog prototype',
-      title: 'Curated Commerce Preview',
+      title: 'Curated Catalog Preview',
       body: 'A prototype catalog for Heritage Aquariums, aquatic plants, equipment, and decorative pieces. Checkout is not enabled.',
       filtersLabel: 'Product category filters',
       searchLabel: 'Search products',
@@ -238,6 +244,7 @@ export const siteContent = {
       reviewAria: 'Review availability for',
       readDetails: 'Read details for',
       close: 'Close product details',
+      closeButton: 'Close',
       material: 'Material',
       useCase: 'Use case',
       availability: 'Availability',
@@ -250,6 +257,7 @@ export const siteContent = {
       kicker: 'Demo cart',
       title: 'Cart Preview',
       close: 'Close cart',
+      closeButton: 'Close',
       note: 'This demo does not process payments, reserve inventory, or ship products.',
       itemsLabel: 'Cart items',
       each: 'each',
@@ -259,6 +267,7 @@ export const siteContent = {
       remove: 'Remove',
       removeAria: 'Remove from cart',
       total: 'Total',
+      quantity: 'Quantity',
       clear: 'Clear Cart',
       empty: 'Your prototype cart is empty.',
       checkout: 'Checkout unavailable in prototype',
@@ -377,12 +386,17 @@ export const siteContent = {
   },
   zh: {
     metaTitle: 'Oriental Aquascape - 东方美学水族空间',
+    accessibility: {
+      skipLink: '跳到主要内容',
+      primaryActionsLabel: '首页主要操作',
+      brandPillarsLabel: '品牌内容方向',
+    },
     header: {
       brand: 'Oriental Aquascape',
       homeAria: 'Oriental Aquascape 首页',
       navLabel: '主导航',
-      cart: '清单',
-      cartAria: '打开演示清单',
+      cart: '购物车',
+      cartAria: '打开购物车',
       menu: '菜单',
       menuOpen: '打开导航菜单',
       menuClose: '关闭导航菜单',
@@ -390,7 +404,7 @@ export const siteContent = {
       languageAria: '切换语言为英文',
       nav: [
         { route: 'home', href: '#/', label: '首页' },
-        { route: 'shop', href: '#/shop', label: '商城' },
+        { route: 'shop', href: '#/shop', label: '目录' },
         { route: 'consultation', href: '#/consultation', label: '咨询' },
         { route: 'story', href: '#/story', label: '品牌故事' },
         { route: 'lookbook', href: '#/lookbook', label: '作品集' },
@@ -399,27 +413,27 @@ export const siteContent = {
     hero: {
       title: '东方美学水族空间',
       body: 'Oriental Aquascape 将东方水景、古法鱼缸、器皿与装饰品，以及 AI 辅助咨询带入当代空间。',
-      shopCta: '探索商城',
-      consultationCta: '开始咨询',
+      shopCta: '浏览精选目录',
+      consultationCta: '生成咨询简报',
       label: '生活之水',
       caption: '器形、水线、玉石与智能线索',
     },
     studio: {
       kicker: '品牌陈述',
-      title: 'Oriental Aquascape 关注东方水景、水生生命、古法鱼缸、器皿、装饰品与空间咨询。',
-      body: '我们将水视为气氛、材料、象征与有生命的系统。',
+      title: 'Oriental Aquascape 关注东方水景、水生生境、古法鱼缸、器皿与装饰品，以及文化性的空间咨询。',
+      body: '我们将水视为氛围、材料、象征与持续运转的生活系统，让东方审美进入当代空间。',
     },
     categories: {
       kicker: '平台内容',
-      title: '围绕生活之水与文化材料的克制索引。',
-      body: '分类保持简洁清晰，为商城、咨询与平台工作流预留空间。',
+      title: '围绕生活水景与文化材料的清雅索引。',
+      body: '分类保持简洁清晰，为精选目录、空间咨询与平台工作流预留空间。',
       selected: '当前关注',
-      partnershipNote: '商业合作：面向设计师、酒店、办公室与合作伙伴的未来 To B 工作流。',
+      partnershipNote: '商业合作：面向设计师、酒店、办公空间与供应伙伴的未来 To B 工作流。',
       items: [
         {
           id: 'eastern-aquascapes',
           title: '东方水景',
-          caption: '面向当代空间的生活水景构成。',
+          caption: '面向当代空间的东方水景构成。',
         },
         {
           id: 'high-end-ornamental-fish',
@@ -429,22 +443,22 @@ export const siteContent = {
         {
           id: 'aquatic-plants',
           title: '水生植物',
-          caption: '服务于精致水景的植物搭配方向。',
+          caption: '服务于精致水景的水生植物搭配方向。',
         },
         {
           id: 'aquarium-equipment',
           title: '水族设备',
-          caption: '稳定水体系统所需的安静基础设施。',
+          caption: '支撑稳定水体系统的安静基础设施。',
         },
         {
           id: 'heritage-aquariums',
           title: '古法鱼缸',
-          caption: '非遗传承手法与当代空间相连接。',
+          caption: '以非物质文化遗产传承手法制作，连接器形、水体与当代空间。',
         },
         {
           id: 'vessels-decorative-pieces',
           title: '器皿与装饰品',
-          caption: '陶瓷、玉器等装饰品营造空间气韵。',
+          caption: '陶瓷、玉器等装饰品，用于营造克制的空间气韵。',
         },
         {
           id: 'spatial-consultation',
@@ -454,7 +468,7 @@ export const siteContent = {
         {
           id: 'ai-assisted-platform',
           title: 'AI 辅助平台',
-          caption: '辅助发现与准备，最终判断仍以人为中心。',
+          caption: '辅助设计初筛与方案准备，最终判断仍以人为中心。',
         },
       ],
     },
@@ -462,7 +476,8 @@ export const siteContent = {
       kicker: '概念研究',
       title: '为未来空间方向准备的安静研究。',
       body: '这些研究用于表达气质、构成与材料节奏。',
-      cta: '查看作品集',
+      cta: '浏览作品集',
+      studyCaptionPrefix: '研究',
       studies: [
         {
           id: 'eastern-courtyard-water',
@@ -478,17 +493,17 @@ export const siteContent = {
         },
         {
           id: 'heritage-vessel-aquascape',
-          title: '古法器形水景',
+          title: '古法鱼缸水景',
           label: '概念研究',
           caption: '以器形为核心，连接传承手法与日常仪式。',
         },
       ],
     },
     commercePreview: {
-      kicker: '商城预览',
+      kicker: '精选目录预览',
       title: '策展式产品世界，而非嘈杂货架。',
       body: '静态目录方向涵盖古法鱼缸、水生植物、水族设备与器皿装饰品。',
-      cta: '进入商城',
+      cta: '进入精选目录',
       items: [
         {
           title: '古法鱼缸',
@@ -503,7 +518,7 @@ export const siteContent = {
           description: '稳定、克制，并尽量隐入空间的基础设施。',
         },
         {
-          title: '装饰品',
+          title: '器皿与装饰品',
           description: '陶瓷、玉器等装饰品形成空间存在感。',
         },
       ],
@@ -519,23 +534,23 @@ export const siteContent = {
     consultationTeaser: {
       kicker: '咨询',
       title: '易学风水空间咨询',
-      body: '咨询关注摆放、平衡、材料、气氛与象征意义，不承诺财务、医疗或个人结果。',
-      cta: '构建咨询简报',
+      body: '咨询关注摆放、平衡、材料、气氛与象征意义，不提供财务、医疗或个人结果判断。',
+      cta: '生成咨询简报',
       diagramLabel: '咨询考虑维度',
       visualLabel: '空间图式',
       visualCaption: '摆放、平衡、材料',
       considerations: ['摆放', '平衡', '材料', '气氛', '象征意义'],
-      finalTitle: '开始一个生活水景项目。',
-      finalPrimary: '开始咨询',
-      finalSecondary: '查看作品集',
+      finalTitle: '开始一个克制的生活水景项目。',
+      finalPrimary: '生成咨询简报',
+      finalSecondary: '浏览作品集',
     },
     pages: {
       shop: {
-        title: '策展式商城预览',
-        body: '独立静态目录，用于规划古法鱼缸、水生植物、水族设备与克制的装饰品。',
-        note: '仅为演示目录，结账保持关闭。',
+        title: '精选目录预览',
+        body: '独立静态目录，用于规划古法鱼缸、水生植物、水族设备与器皿装饰品。',
+        note: '仅为演示目录，演示版本暂不支持结账。',
         visualLabel: '目录研究',
-        visualCaption: '策展式静态商城界面',
+        visualCaption: '精选静态目录界面',
       },
       consultation: {
         title: '咨询简报生成器',
@@ -546,21 +561,21 @@ export const siteContent = {
       },
       story: {
         title: '一种当代东方水族空间实践',
-        body: 'Oriental Aquascape 将水、器、文化材料与当代智能带入克制空间。',
+        body: 'Oriental Aquascape 将水、器、文化材料与 AI 辅助平台带入清雅克制的当代空间。',
         visualLabel: '品牌故事',
         visualCaption: '水、器、材料',
         sections: [
           {
-            title: '生活之水',
-            body: '平台将水生生命视为气氛、材料、象征与有生命的系统。',
+            title: '生活水景',
+            body: '平台将水生生命视为气氛、材料、象征与持续运转的生活系统。',
           },
           {
             title: '古法鱼缸',
-            body: '非物质文化遗产传承手法制作的古法鱼缸连接器形、水体与日常仪式。',
+            body: '非物质文化遗产传承手法制作的古法鱼缸，连接器形、水体与日常仪式。',
           },
           {
             title: '器皿与装饰品',
-            body: '陶瓷、玉器等装饰品帮助空间形成更安静的节奏。',
+            body: '陶瓷、玉器等装饰品帮助空间形成更安静、更有秩序的节奏。',
           },
           {
             title: 'AI 辅助平台',
@@ -570,22 +585,22 @@ export const siteContent = {
       },
       lookbook: {
         title: '概念研究',
-        body: '面向住宅、工作室、酒店空间与商业合作方向的精简作品集。',
+        body: '面向住宅、工作室、酒店空间与商业合作方向的精简概念作品集。',
         visualLabel: '作品集',
         visualCaption: '概念研究索引',
       },
     },
     shop: {
       kicker: '静态目录原型',
-      title: '策展式商城预览',
-      body: '用于古法鱼缸、水生植物、水族设备与装饰品的原型目录。结账未启用。',
-      filtersLabel: '产品分类筛选',
-      searchLabel: '搜索产品',
-      searchPlaceholder: '搜索器皿、植物、设备...',
-      cartNote: '演示清单与关闭的结账',
-      itemLabel: '个目录项目',
-      emptyTitle: '没有匹配的目录项目。',
-      emptyBody: '请尝试更宽泛的搜索，或回到全部分类。',
+      title: '精选目录预览',
+      body: '用于古法鱼缸、水生植物、水族设备与器皿装饰品的静态精选目录。当前为演示版本，暂不支持结账。',
+      filtersLabel: '商品分类筛选',
+      searchLabel: '搜索商品',
+      searchPlaceholder: '搜索器皿、植物、设备或材料...',
+      cartNote: '当前为演示版本，暂不支持结账',
+      itemLabel: '个商品',
+      emptyTitle: '暂无匹配商品。',
+      emptyBody: '请尝试更宽泛的关键词，或返回全部分类。',
       filters: {
         All: '全部',
         'Heritage Aquariums': '古法鱼缸',
@@ -597,68 +612,71 @@ export const siteContent = {
       },
     },
     product: {
-      add: '加入清单',
+      add: '加入购物车',
       future: '未来类目',
-      consultationRequired: '需咨询',
-      details: '详情',
+      consultationRequired: '需咨询确认',
+      details: '查看详情',
       futureCaption: '未来类目',
-      openDetails: '打开详情',
-      addAria: '加入清单',
-      reviewAria: '查看可用性',
-      readDetails: '阅读详情',
-      close: '关闭产品详情',
+      openDetails: '打开商品详情：',
+      addAria: '加入购物车：',
+      reviewAria: '查看可用性：',
+      readDetails: '查看详情：',
+      close: '关闭商品详情',
+      closeButton: '关闭',
       material: '材料',
       useCase: '使用场景',
-      availability: '可用性',
+      availability: '购买状态',
       tags: '标签',
-      prototypeNote: '这是静态原型，不处理付款、不保留库存、不发货。',
-      futureDisabled: '未来类目 / 需咨询',
+      prototypeNote: '当前为演示版本，不处理支付、库存预留或发货。',
+      futureDisabled: '暂不开放在线购买，需咨询确认',
     },
     cart: {
-      kicker: '演示清单',
-      title: '清单预览',
-      close: '关闭清单',
-      note: '此演示不处理付款、不保留库存、不发货。',
-      itemsLabel: '清单项目',
+      kicker: '购物车',
+      title: '购物车',
+      close: '关闭购物车',
+      closeButton: '关闭',
+      note: '当前为演示版本，不处理支付、库存预留或发货。',
+      itemsLabel: '购物车商品',
       each: '单件',
       subtotal: '小计',
       decrease: '减少数量',
       increase: '增加数量',
       remove: '移除',
-      removeAria: '从清单中移除',
-      total: '总计',
-      clear: '清空清单',
-      empty: '你的演示清单为空。',
-      checkout: '原型中不提供结账',
+      removeAria: '从购物车移除',
+      total: '合计',
+      quantity: '数量',
+      clear: '清空购物车',
+      empty: '购物车为空。',
+      checkout: '演示版本暂不支持结账',
     },
     builder: {
       kicker: 'AI 辅助发现',
-      title: '构建咨询简报',
-      body: '静态原型，用于在正式咨询前梳理初始方向。',
+      title: '生成咨询简报',
+      body: '静态原型，用于在正式咨询前梳理初步方向、空间条件与方案准备。',
       preferencesLabel: '咨询偏好',
-      progressSuffix: '项偏好已选择',
+      progressSuffix: '项已选择',
       reset: '重置',
-      visualLabel: 'AI 辅助发现原型',
+      visualLabel: 'AI 辅助设计初筛',
       outputKicker: '咨询简报',
-      outputTitle: '项目方向',
-      projectSetting: '空间类型',
-      designDirection: '设计方向',
-      primaryFocus: '主要关注',
-      suggestedNextStep: '建议下一步',
+      outputTitle: '初步方向',
+      projectSetting: '项目空间',
+      designDirection: '设计取向',
+      primaryFocus: '关注重点',
+      suggestedNextStep: '下一步建议',
       recommendedCategories: '推荐路径',
       conceptDirection: '建议概念方向',
       spatialNote: '空间咨询说明',
-      prototypeNote: '此原型不会提交请求，也不会生成最终设计方案，仅用于早期项目梳理。',
+      prototypeNote: '本原型不会提交正式咨询请求，也不会生成最终设计方案，仅用于早期项目梳理与方案准备。',
       copy: '复制简报',
       copied: '简报已复制。',
       manual: '剪贴板不可用，请手动复制简报文本。',
-      fallbackSpace: '请选择空间类型',
-      fallbackDirection: '请选择设计方向',
-      fallbackFocus: '请选择主要关注',
+      fallbackSpace: '请选择项目空间',
+      fallbackDirection: '请选择设计取向',
+      fallbackFocus: '请选择关注重点',
       optionGroups: [
         {
           id: 'spaceType',
-          label: '空间类型',
+          label: '项目空间',
           options: [
             { value: 'Residential interior', label: '住宅空间' },
             { value: 'Office / studio', label: '办公室 / 工作室' },
@@ -669,19 +687,19 @@ export const siteContent = {
         },
         {
           id: 'preferredDirection',
-          label: '偏好方向',
+          label: '设计取向',
           options: [
-            { value: 'Minimal Eastern aquascape', label: '极简东方水景' },
-            { value: 'Heritage vessel composition', label: '古法器形构成' },
+            { value: 'Minimal Eastern aquascape', label: '克制东方水景' },
+            { value: 'Heritage vessel composition', label: '古法鱼缸与器形构成' },
             { value: 'Plant-focused living water', label: '以植物为主的生活水景' },
             { value: 'Equipment-forward modern setup', label: '偏现代设备系统' },
             { value: 'Decorative pieces and spatial atmosphere', label: '装饰品与空间气氛' },
-            { value: 'AI-assisted product discovery', label: 'AI 辅助产品发现' },
+            { value: 'AI-assisted product discovery', label: 'AI 辅助设计初筛' },
           ],
         },
         {
           id: 'primaryInterest',
-          label: '主要关注',
+          label: '关注重点',
           options: [
             { value: 'Aquascaping design', label: '水景设计' },
             { value: 'Heritage Aquariums', label: '古法鱼缸' },
@@ -831,7 +849,7 @@ const productCopy: Record<Language, Record<string, ProductCopy>> = {
     'high-end-ornamental-fish-selection': {
       name: 'High-End Ornamental Fish Selection',
       category: 'High-End Ornamental Fish',
-      description: 'A future/later category requiring specialist sourcing, care standards, and consultation.',
+      description: 'A future category requiring specialist sourcing, care standards, and consultation.',
       displayPrice: 'Future category / consultation required',
       tags: ['High-End Ornamental Fish', 'future category', 'consultation required'],
       material: 'Live-goods category planning only',
@@ -846,66 +864,66 @@ const productCopy: Record<Language, Record<string, ProductCopy>> = {
       displayPrice: 'Consultation required',
       tags: ['consultation', 'placement', 'balance', 'symbolic meaning', 'aesthetic'],
       material: 'Spatial consultation and cultural interpretation',
-      useCase: 'Project direction for contemporary spaces without outcome promises',
+      useCase: 'Project direction for contemporary spaces without outcome claims',
       availability: 'Consultation required',
     },
   },
   zh: {
     'heritage-vessel-01': {
-      name: '古法器形 No. 01',
+      name: '古法鱼缸 No. 01',
       category: '古法鱼缸',
-      description: '器形主导的古法鱼缸演示研究，强调克制比例与日常仪式。',
-      displayPrice: '$680 演示价格',
-      tags: ['古法鱼缸', '器形', '陶瓷', '生活之水'],
+      description: '以器形为核心的古法鱼缸演示研究，强调克制比例与日常水景仪式。',
+      displayPrice: '$680 演示价',
+      tags: ['古法鱼缸', '器形', '陶瓷', '生活水景'],
       material: '瓷感陶瓷与克制铜色细节',
-      useCase: '适用于住宅、工作室与酒店空间的低姿态室内陈列',
+      useCase: '适用于住宅、工作室与酒店空间的低调室内陈列',
       availability: '仅演示产品',
     },
     'jade-stone-composition-set': {
       name: '玉石构成套组',
       category: '器皿与装饰品',
-      description: '用于空间气氛、陈列节奏与安静对比的材料构成。',
-      displayPrice: '$340 演示价格',
+      description: '用于空间气氛、陈列节奏与沉静对比的材料构成。',
+      displayPrice: '$340 演示价',
       tags: ['玉石', '石材', '装饰品', '构成'],
       material: '玉色石材选择与柔和银雾展示面',
-      useCase: '适用于搁架、玄关台面或水景周边空间造型',
+      useCase: '适用于搁架、玄关台面或水景周边的空间陈设',
       availability: '仅演示产品',
     },
     'ceramic-water-bowl': {
       name: '陶瓷水钵',
       category: '器皿与装饰品',
       description: '关于水面、反射与东方室内克制感的安静器皿研究。',
-      displayPrice: '$220 演示价格',
+      displayPrice: '$220 演示价',
       tags: ['陶瓷', '水钵', '器皿', '装饰品'],
       material: '细腻陶瓷与瓷白表面',
-      useCase: '水景陈列、玄关台面或沉静室内点缀',
+      useCase: '用于水景陈列、玄关台面或沉静的室内点缀',
       availability: '仅演示产品',
     },
     'aquatic-plant-selection': {
-      name: '水生植物选择',
+      name: '水生植物精选',
       category: '水生植物',
-      description: '用于种植水景、柔和色调与平衡生命质感的规划组合。',
-      displayPrice: '$95 演示价格',
+      description: '用于种植水景、柔和色调与平衡生命质感的精选规划组合。',
+      displayPrice: '$95 演示价',
       tags: ['水生植物', '种植', '水景', '生命系统'],
       material: '沉水与挺水构成的演示植物方向',
       useCase: '平静水景布局的植物原型方向',
       availability: '仅演示产品',
     },
     'low-profile-aquascaping-tools': {
-      name: '低姿态水景工具',
+      name: '克制水景工具',
       category: '水族设备',
-      description: '用于布景、修剪、摆放与日常维护的克制工具组。',
-      displayPrice: '$145 演示价格',
+      description: '用于布景、修剪、定位与日常维护的克制工具组。',
+      displayPrice: '$145 演示价',
       tags: ['工具', '水景', '维护', '设备'],
       material: '拉丝钢与哑光石墨工具表面',
       useCase: '用于水景准备与日常护理',
       availability: '仅演示产品',
     },
     'equipment-starter-set': {
-      name: '设备入门套组',
+      name: '水族设备入门套组',
       category: '水族设备',
-      description: '用于稳定循环、照明与初始搭建规划的安静基础设施。',
-      displayPrice: '$380 演示价格',
+      description: '用于稳定循环、照明与初始搭建规划的安静设备组合。',
+      displayPrice: '$380 演示价',
       tags: ['设备', '入门套组', '照明', '过滤'],
       material: '石墨与冷雾色方向的小型设备组合',
       useCase: '小型当代水景的演示搭建路径',
@@ -915,41 +933,41 @@ const productCopy: Record<Language, Record<string, ProductCopy>> = {
       name: '玉色装饰品',
       category: '器皿与装饰品',
       description: '用于材料存在感、留白与精致构成的玉色陈列品。',
-      displayPrice: '$260 演示价格',
+      displayPrice: '$260 演示价',
       tags: ['玉石', '装饰品', '陈列', '材料'],
-      material: '玉石感材料与柔和手工表面',
+      material: '玉色石材感材料与柔和手工表面',
       useCase: '适用于器皿、水钵与水景研究旁的室内造型',
       availability: '仅演示产品',
     },
     'heritage-aquarium-consultation-deposit': {
-      name: '古法鱼缸咨询占位（演示）',
+      name: '古法鱼缸咨询预留（演示）',
       category: '咨询',
-      description: '仅用于咨询流程测试的演示规划项目，不处理付款。',
-      displayPrice: '$150 演示价格',
+      description: '仅用于咨询流程测试的演示规划项目，不处理支付。',
+      displayPrice: '$150 演示价',
       tags: ['咨询', '古法鱼缸', '规划', '演示'],
-      material: '咨询规划占位',
-      useCase: '用于项目 intake 与准备流程的原型路径',
+      material: '咨询流程演示项',
+      useCase: '用于项目需求整理与方案准备流程的原型路径',
       availability: '演示咨询项目',
     },
     'high-end-ornamental-fish-selection': {
-      name: '高端观赏鱼选择',
+      name: '高端观赏鱼规划',
       category: '高端观赏鱼',
-      description: '未来类目，需要专业来源、照护标准与咨询流程。',
-      displayPrice: '未来类目 / 需咨询',
-      tags: ['高端观赏鱼', '未来类目', '需咨询'],
-      material: '活体类目规划',
-      useCase: '未来咨询路径，不开放在线结账',
-      availability: '未来类目 / 需咨询',
+      description: '未来类目，需先确认专业来源、照护标准与咨询流程。',
+      displayPrice: '未来类目 / 需咨询确认',
+      tags: ['高端观赏鱼', '未来类目', '需咨询确认'],
+      material: '活体类目规划中',
+      useCase: '未来咨询路径，暂不支持下单',
+      availability: '未来类目 / 需咨询确认',
     },
     'i-ching-feng-shui-spatial-consultation': {
       name: '易学风水空间咨询',
       category: '咨询',
       description: '围绕摆放、平衡、材料与气氛的文化、空间、象征与审美咨询。',
-      displayPrice: '需咨询',
+      displayPrice: '需咨询确认',
       tags: ['咨询', '摆放', '平衡', '象征意义', '审美'],
       material: '空间咨询与文化解读',
-      useCase: '为当代空间提供项目方向，不承诺外部结果',
-      availability: '需咨询',
+      useCase: '用于当代空间方向梳理，不承诺财务、医疗或个人结果',
+      availability: '需咨询确认',
     },
   },
 };
@@ -988,7 +1006,7 @@ const conceptDirectionMap = {
   zh: {
     'Eastern Courtyard Water': '东方庭院之水',
     'Jade Stone Composition': '玉石构成',
-    'Heritage Vessel Aquascape': '古法器形水景',
+    'Heritage Vessel Aquascape': '古法鱼缸水景',
   },
 } as const;
 
@@ -1047,13 +1065,13 @@ export function buildLocalizedBrief(
   const selectedCount = Object.values(selections).filter(Boolean).length;
   const isComplete = selectedCount === 6;
   const projectSetting =
-    getLocalizedOptionLabel(language, 'spaceType', selections.spaceType) ?? '未选择空间';
+    getLocalizedOptionLabel(language, 'spaceType', selections.spaceType) ?? '未选择项目空间';
   const designDirection =
     getLocalizedOptionLabel(language, 'preferredDirection', selections.preferredDirection) ??
-    '开放的设计方向';
+    '开放的设计取向';
   const primaryFocus =
     getLocalizedOptionLabel(language, 'primaryInterest', selections.primaryInterest) ??
-    '待选择的主要关注';
+    '待选择的关注重点';
   const timeline = getLocalizedOptionLabel(language, 'timeline', selections.timeline) ?? '开放时间';
   const maintenance =
     getLocalizedOptionLabel(
@@ -1064,10 +1082,10 @@ export function buildLocalizedBrief(
   const localizedPathways = getLocalizedPathways(pathways, language).join('、');
 
   if (isComplete) {
-    return `初步方向：为${projectSetting}建立${designDirection}，主要关注为${primaryFocus}。时间节奏：${timeline}。维护偏好：${maintenance}。建议路径：${localizedPathways}。正式咨询将进一步明确尺度、材料与空间气氛。`;
+    return `初步方向：为${projectSetting}梳理${designDirection}，关注重点为${primaryFocus}。时间节奏：${timeline}。维护偏好：${maintenance}。推荐路径：${localizedPathways}。正式咨询将进一步确认尺度、材料与空间氛围。`;
   }
 
-  return `草案方向：为${projectSetting}建立${designDirection}，主要关注为${primaryFocus}。继续选择偏好后，可进一步细化推荐路径、时间节奏与维护方式。`;
+  return `草案方向：为${projectSetting}梳理${designDirection}，关注重点为${primaryFocus}。继续选择偏好后，可进一步细化推荐路径、时间节奏与维护方式。`;
 }
 
 export function getLocalizedNextStep(selections: ConsultationSelections, language: Language) {
@@ -1084,14 +1102,14 @@ export function getLocalizedNextStep(selections: ConsultationSelections, languag
   }
 
   if (selections.primaryInterest === 'I Ching & Feng Shui Spatial Consultation') {
-    return '先进行文化、空间、象征与审美审阅，再进入产品选择。';
+    return '先梳理文化、空间、象征与审美方向，再进入产品选择。';
   }
 
   if (selections.timeline === 'Exploring' || selections.budgetRange === 'Concept only') {
-    return '从概念研究开始，明确尺度、材料与维护节奏。';
+    return '从概念研究开始，确认尺度、材料与维护节奏。';
   }
 
-  return '通过正式咨询进一步梳理尺度、材料、产品路径与维护方式。';
+  return '通过正式咨询进一步确认尺度、材料、产品路径与维护方式。';
 }
 
 export function getLocalizedSpatialNote(selections: ConsultationSelections, language: Language) {
@@ -1106,8 +1124,8 @@ export function getLocalizedSpatialNote(selections: ConsultationSelections, lang
     selections.spaceType === 'Retail / showroom';
 
   if (!mayBenefitFromSpatialReview) {
-    return '空间咨询可作为辅助层，服务于水景方向而不喧宾夺主。';
+    return '空间咨询可作为辅助层，服务于水景方向，而不取代设计判断。';
   }
 
-  return '空间咨询可帮助梳理摆放、平衡、材料、气氛与象征意义，但不承诺外部结果。';
+  return '空间咨询可帮助梳理摆放、平衡、材料、氛围与象征意义，但不提供财务、医疗或个人结果判断。';
 }

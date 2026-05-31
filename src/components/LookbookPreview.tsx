@@ -29,7 +29,7 @@ export function LookbookPreview({ content, showRouteCta = true }: LookbookPrevie
           <article className="study-card" key={study.id}>
             <IllustrationPanel
               label={study.label}
-              caption={`Study ${String(index + 1).padStart(2, '0')}`}
+              caption={`${content.lookbookPreview.studyCaptionPrefix} ${String(index + 1).padStart(2, '0')}`}
               motif={studyVisuals[study.id].motif}
               tone={studyVisuals[study.id].tone}
               size="default"

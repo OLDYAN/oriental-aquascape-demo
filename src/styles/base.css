@@ -5,19 +5,30 @@
 html {
   color: var(--text-primary);
   background: var(--surface-page);
-  font-family: var(--font-sans);
+  font-family: var(--font-body-en);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html[lang='zh-CN'] {
+  font-family: var(--font-body-zh);
+  line-height: var(--line-height-zh-body);
+}
+
 body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
+  background:
+    repeating-linear-gradient(0deg, rgba(95, 81, 56, 0.018) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(90deg, rgba(75, 89, 96, 0.012) 0 1px, transparent 1px 16px),
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.62), transparent 28%),
+    radial-gradient(circle at 84% 12%, rgba(221, 228, 227, 0.42), transparent 32%),
+    var(--surface-page);
 }
 
 button,
@@ -47,12 +58,35 @@ h1,
 h2,
 h3 {
   color: var(--text-primary);
-  font-family: var(--font-serif);
+  font-family: var(--font-editorial);
   font-weight: 500;
   letter-spacing: 0;
+  line-height: var(--line-height-tight);
+  font-feature-settings: 'kern' 1, 'liga' 1;
   text-wrap: balance;
+}
+
+html[lang='zh-CN'] h1,
+html[lang='zh-CN'] h2,
+html[lang='zh-CN'] h3 {
+  font-family: var(--font-display-zh);
+  line-height: var(--line-height-zh-heading);
+  letter-spacing: var(--letter-spacing-zh-tight);
+}
+
+html[lang='zh-CN'] p,
+html[lang='zh-CN'] li,
+html[lang='zh-CN'] button,
+html[lang='zh-CN'] input,
+html[lang='zh-CN'] textarea {
+  letter-spacing: 0;
 }
 
 main {
   display: block;
+}
+
+::selection {
+  color: var(--color-porcelain-white);
+  background: rgba(61, 81, 89, 0.88);
 }

@@ -57,6 +57,8 @@ Sketch/comic style means controlled editorial drawing: quiet panels, thin ink li
 - Use layered SVG forms, not external images.
 - Preserve whitespace around captions and labels so the art does not compete with text.
 - Motifs should vary in density: hero, product drawer, and consultation visuals may be richer; small product cards should be cleaner.
+- Use soft underlays, secondary contour lines, and fine hatching to make panels read as professional concept studies rather than simple icons.
+- Material suggestion should come from line weight, translucent fills, ceramic/jade/mineral color, and disciplined composition.
 
 ## Professional Layout QA Checklist
 
@@ -76,6 +78,15 @@ Sketch/comic style means controlled editorial drawing: quiet panels, thin ink li
 - Animated lines can drift only inside their SVG safe zone.
 - Captions should use readable overlays when placed on top of illustrated panels.
 - Drawers and cards should use overflow containment intentionally, not accidentally clip essential art.
+- Product cards must keep media, title, description, price/status, and actions in stable zones; hover motion cannot resize the card.
+- Chinese labels, filters, and builder chips should wrap as whole phrases with enough padding and line-height.
+
+## Round 10D QA Rules
+
+- Check `#/`, `#/shop`, `#/consultation`, `#/story`, and `#/lookbook` in both English and Chinese.
+- Check cart add/increase/remove/clear, product drawer open/close, future-category disabled state, search/filter, language persistence, and builder copy/reset.
+- Confirm no horizontal overflow on mobile and no text collision with illustration captions.
+- Confirm SVG decorative internals stay `aria-hidden` while panels and drawers keep meaningful labels.
 
 ## Future Image Replacement
 

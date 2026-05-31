@@ -17,7 +17,7 @@ export const categories: Category[] = [
   {
     id: 'high-end-ornamental-fish',
     title: 'High-End Ornamental Fish',
-    caption: 'Future/later category pending sourcing, care, and logistics standards.',
+    caption: 'Future category pending sourcing, care, and logistics standards.',
     status: 'future-later',
   },
   {

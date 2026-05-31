@@ -193,7 +193,7 @@ export const products: Product[] = [
     name: 'High-End Ornamental Fish Selection',
     category: 'High-End Ornamental Fish',
     description:
-      'A future/later category requiring specialist sourcing, care standards, and consultation.',
+      'A future category requiring specialist sourcing, care standards, and consultation.',
     price: 0,
     displayPrice: 'Future category / consultation required',
     tags: ['High-End Ornamental Fish', 'future category', 'consultation required'],
@@ -217,7 +217,7 @@ export const products: Product[] = [
     displayPrice: 'Consultation required',
     tags: ['consultation', 'placement', 'balance', 'symbolic meaning', 'aesthetic'],
     material: 'Spatial consultation and cultural interpretation',
-    useCase: 'Project direction for contemporary spaces without outcome promises',
+    useCase: 'Project direction for contemporary spaces without outcome claims',
     availability: 'Consultation required',
     isPrototype: true,
     isLiveGoods: false,

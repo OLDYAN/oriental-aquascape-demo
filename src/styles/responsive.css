@@ -25,6 +25,18 @@
 }
 
 @media (max-width: 860px) {
+  .app-shell {
+    background-attachment: scroll;
+  }
+
+  .app-shell::before {
+    opacity: 0.24;
+  }
+
+  .app-shell::after {
+    opacity: 0.34;
+  }
+
   .mobile-menu-button {
     display: inline-flex;
     align-items: center;
@@ -81,6 +93,14 @@
     font-size: 3.75rem;
   }
 
+  html[lang='zh-CN'] .hero-copy h1 {
+    font-size: 4rem;
+  }
+
+  html[lang='zh-CN'] .page-hero-copy h1 {
+    font-size: 3.25rem;
+  }
+
   .hero-subheadline {
     font-size: 1.15rem;
   }
@@ -122,6 +142,14 @@
 
   .page-hero-copy h1 {
     font-size: 2.7rem;
+  }
+
+  html[lang='zh-CN'] .hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  html[lang='zh-CN'] .page-hero-copy h1 {
+    font-size: 2.48rem;
   }
 
   .page-hero-copy p {
@@ -226,9 +254,40 @@
   }
 
   .consultation-panel,
+  .builder-panel,
   .final-cta,
   .brief-output {
     padding: var(--space-5);
+  }
+
+  .site-header,
+  .drawer-panel,
+  .surface-frosted,
+  .panel-frosted,
+  .drawer-textured,
+  .illustration-label,
+  .illustration-caption {
+    backdrop-filter: blur(8px);
+  }
+
+  .surface-texture::before,
+  .surface-rice-paper::before,
+  .surface-paper::before,
+  .surface-porcelain::before,
+  .surface-ceramic::before,
+  .surface-frosted::before,
+  .surface-ink-wash::before,
+  .surface-mineral::before,
+  .panel-frosted::before,
+  .panel-ceramic::before,
+  .panel-paper::before,
+  .drawer-textured::before,
+  .card-textured::before,
+  .brief-paper-surface::before,
+  .shop-matte-surface::before,
+  .panel-textured::before,
+  .visual-panel-textured::before {
+    opacity: 0.58;
   }
 
   .builder-progress {
@@ -238,6 +297,7 @@
 
   .option-control {
     width: 100%;
+    min-height: 44px;
   }
 
   .discovery-visual {

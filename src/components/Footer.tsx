@@ -10,7 +10,7 @@ export function Footer({ content }: FooterProps) {
       <a className="brand-mark" href="#/">
         {content.header.brand}
       </a>
-      <div className="footer-links" aria-label="Brand pillars">
+      <div className="footer-links" aria-label={content.accessibility.brandPillarsLabel}>
         {content.footer.map((term) => (
           <span key={term}>{term}</span>
         ))}

@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">
-        {language === 'zh' ? '跳到主要内容' : 'Skip to main content'}
+        {content.accessibility.skipLink}
       </a>
       <Header
         cartCount={totalItems}

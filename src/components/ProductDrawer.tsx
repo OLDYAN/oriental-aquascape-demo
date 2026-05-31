@@ -73,7 +73,7 @@ export function ProductDrawer({
   return (
     <div className="drawer-layer" role="presentation" onClick={onClose}>
       <aside
-        className="drawer-panel product-drawer"
+        className="drawer-panel product-drawer drawer-textured"
         role="dialog"
         aria-modal="true"
         aria-labelledby="product-drawer-title"
@@ -88,7 +88,7 @@ export function ProductDrawer({
             onClick={onClose}
             ref={closeButtonRef}
           >
-            {language === 'zh' ? '关闭' : 'Close'}
+            {content.product.closeButton}
           </button>
         </div>
 
@@ -121,7 +121,7 @@ export function ProductDrawer({
           </div>
           <div>
             <dt>{content.product.tags}</dt>
-            <dd>{localizedProduct.tags.join(', ')}</dd>
+            <dd>{localizedProduct.tags.join(language === 'zh' ? '、' : ', ')}</dd>
           </div>
         </dl>
 

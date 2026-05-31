@@ -62,7 +62,11 @@ export function Shop({
     useProductFilter(products, getSearchText);
 
   return (
-    <section className="shop-section section-shell" id="shop-preview" aria-labelledby="shop-title">
+    <section
+      className="shop-section section-shell shop-matte-surface"
+      id="shop-preview"
+      aria-labelledby="shop-title"
+    >
       <div className="section-header">
         <div>
           <p className="section-kicker">{content.shop.kicker}</p>
@@ -129,7 +133,7 @@ export function Shop({
           ))}
         </div>
       ) : (
-        <div className="empty-products">
+        <div className="empty-products brief-paper-surface">
           <h3>{content.shop.emptyTitle}</h3>
           <p>{content.shop.emptyBody}</p>
         </div>

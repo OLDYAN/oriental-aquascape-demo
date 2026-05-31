@@ -11,7 +11,7 @@ export function Hero({ content }: HeroProps) {
       <div className="hero-copy">
         <h1 id="hero-title">{content.hero.title}</h1>
         <p className="hero-subheadline">{content.hero.body}</p>
-        <div className="button-row" aria-label="Primary homepage actions">
+        <div className="button-row" aria-label={content.accessibility.primaryActionsLabel}>
           <a className="button button-primary" href="#/shop">
             {content.hero.shopCta}
           </a>

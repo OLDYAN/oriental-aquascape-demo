@@ -13,7 +13,7 @@ export const services: Service[] = [
   {
     id: 'spatial-consultation',
     title: 'I Ching & Feng Shui Spatial Consultation',
-    caption: 'Cultural, spatial, symbolic, and aesthetic consultation without outcome promises.',
+    caption: 'Cultural, spatial, symbolic, and aesthetic consultation without outcome claims.',
   },
   {
     id: 'ai-assisted-discovery',

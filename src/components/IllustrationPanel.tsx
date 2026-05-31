@@ -20,6 +20,7 @@ export function IllustrationPanel({
 }: IllustrationPanelProps) {
   const panelClassName = [
     'illustration-panel',
+    'visual-panel-textured',
     `illustration-panel-${size}`,
     `illustration-panel-${tone}`,
     className,
@@ -28,7 +29,7 @@ export function IllustrationPanel({
     .join(' ');
 
   return (
-    <div className={panelClassName} role="img" aria-label={`${label} illustration panel`}>
+    <div className={panelClassName} role="img" aria-label={caption ? `${label}: ${caption}` : label}>
       <span className="illustration-label">{label}</span>
       {caption ? <span className="illustration-caption">{caption}</span> : null}
       <SketchMotif motif={motif} />

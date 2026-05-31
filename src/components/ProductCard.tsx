@@ -68,7 +68,7 @@ export function ProductCard({
   }
 
   return (
-    <article className="product-card">
+    <article className="product-card card-textured">
       <button
         className="product-card-main"
         type="button"

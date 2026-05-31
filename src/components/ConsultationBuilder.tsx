@@ -137,7 +137,7 @@ export function ConsultationBuilder({ content, language }: ConsultationBuilderPr
 
   return (
     <section
-      className="consultation-builder section-shell"
+      className="consultation-builder section-shell shop-matte-surface"
       id="consultation-builder"
       aria-labelledby="consultation-builder-title"
     >
@@ -150,11 +150,12 @@ export function ConsultationBuilder({ content, language }: ConsultationBuilderPr
       </div>
 
       <div className="builder-grid">
-        <div className="builder-panel" aria-label={content.builder.preferencesLabel}>
+        <div className="builder-panel panel-ceramic" aria-label={content.builder.preferencesLabel}>
           <div className="builder-progress">
             <span>
-              {selectedCount} of {content.builder.optionGroups.length}{' '}
-              {content.builder.progressSuffix}
+              {language === 'zh'
+                ? `${selectedCount} / ${content.builder.optionGroups.length} ${content.builder.progressSuffix}`
+                : `${selectedCount} of ${content.builder.optionGroups.length} ${content.builder.progressSuffix}`}
             </span>
             <button className="builder-reset" type="button" onClick={resetBuilder}>
               {content.builder.reset}
@@ -195,7 +196,7 @@ export function ConsultationBuilder({ content, language }: ConsultationBuilderPr
             className="discovery-visual"
           />
 
-          <div className="brief-output" aria-live="polite">
+          <div className="brief-output brief-paper-surface" aria-live="polite">
             <p className="section-kicker">{content.builder.outputKicker}</p>
             <h3>{content.builder.outputTitle}</h3>
             <p>{briefText}</p>

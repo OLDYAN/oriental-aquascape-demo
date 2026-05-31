@@ -151,7 +151,7 @@ function getSpatialConsultationNote(selections: ConsultationSelections) {
     return 'Spatial Consultation is optional and can remain secondary to aquascape direction.';
   }
 
-  return 'Spatial Consultation may help frame placement, balance, material, atmosphere, and symbolic meaning without outcome promises.';
+  return 'Spatial Consultation may help frame placement, balance, material, atmosphere, and symbolic meaning without outcome claims.';
 }
 
 export function buildConsultationRecommendation(
