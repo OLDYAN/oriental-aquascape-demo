@@ -239,6 +239,21 @@
     min-height: 340px;
   }
 
+  .generated-image-panel .image-mat {
+    inset: 10px;
+    padding: clamp(12px, 4.8vw, 22px);
+  }
+
+  .image-ratio-square .image-mat,
+  .image-ratio-portrait .image-mat {
+    padding: clamp(14px, 5vw, 24px);
+  }
+
+  .generated-image {
+    min-width: 0;
+    min-height: 0;
+  }
+
   .illustration-label,
   .illustration-caption {
     max-width: calc(100% - 32px);
